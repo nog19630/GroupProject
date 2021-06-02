@@ -1,6 +1,7 @@
 # GroupProject
 This is ITP4915M End of Module Assignment for Group 11.
 ## Setup for development ##
+### MySQL ###
 1. Download the MySQL installer at : https://dev.mysql.com/downloads/installer/
 2. Choose Custom as the setup type
 3. Choose the following packages to install:
@@ -17,3 +18,8 @@ This is ITP4915M End of Module Assignment for Group 11.
 10. Open the connection instance (Local Instance MYSQL80 if default value)
 11. Paste the create table sql query to query1 (GroupProject.sql available in the discord group/current repository)
 12. Execute the query by clicking the lighting icon on the toolbar 
+
+### Visual Studio Nuget Packages ###
+1. Mysql.Data 8.0.25
+2. Mysql.Data.EntityFramework 8.0.25
+3. EntityFramework 6.4.4
