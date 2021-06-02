@@ -17,21 +17,6 @@ CREATE TABLE `customer` (
 CREATE TABLE `documentfreight` (
   `itemID` char(15) NOT NULL,
   `name` char(50) NOT NULL,
-  `quantity` int DEFAULT NULL,
-  `serviceType` char(1) NOT NULL,
-  `serviceOtherType` varchar(50) DEFAULT NULL,
-  `status` varchar(10) DEFAULT NULL,
-  `centerID` varchar(4) DEFAULT NULL,
-  `shipmentNo` char(45) DEFAULT NULL,
-  `charge` float DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`itemID`),
-  CONSTRAINT `pk_freight_id` FOREIGN KEY (`itemID`) REFERENCES `frieght` (`itemID`) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `documentfreight` (
-  `itemID` char(15) NOT NULL,
-  `name` char(50) NOT NULL,
   `quantity` int NOT NULL,
   `serviceType` char(1) NOT NULL,
   `serviceOtherType` varchar(50) DEFAULT NULL,
