@@ -13,10 +13,10 @@ namespace GroupProject
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class edeEntities : DbContext
+    public partial class edeEntities1 : DbContext
     {
-        public edeEntities()
-            : base("name=edeEntities")
+        public edeEntities1()
+            : base("name=edeEntities1")
         {
         }
     

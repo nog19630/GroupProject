@@ -667,7 +667,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="edeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="edeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="customers" EntityType="Self.customer" />
           <EntitySet Name="documentfreights" EntityType="Self.documentfreight" />
           <EntitySet Name="edeaccounts" EntityType="Self.edeaccount" />
@@ -737,7 +737,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="edeModelStoreContainer" CdmEntityContainer="edeEntities">
+        <EntityContainerMapping StorageEntityContainer="edeModelStoreContainer" CdmEntityContainer="edeEntities1">
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="edeModel.customer">
               <MappingFragment StoreEntitySet="customer">

@@ -60,6 +60,19 @@ artifacts/
 StyleCopReport.xml
 
 # Files built by Visual Studio
+App.config
+Model1.*
+customer.cs
+documentfreight.cs
+edeaccount.cs
+frieght.cs
+invoice.cs
+operationcenter.cs
+paymentgateway.cs
+pickuporder.cs
+shipment.cs
+staff.cs
+vehicle.cs
 *_i.c
 *_p.c
 *_h.h
