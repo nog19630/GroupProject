@@ -1,5 +1,19 @@
 CREATE DATABASE `ede`;  
 
+CREATE TABLE `customer` (
+  `customerID` char(12) NOT NULL,
+  `customerName` varchar(50) NOT NULL,
+  `customerPhone` varchar(15) NOT NULL,
+  `customerFax` varchar(15) DEFAULT NULL,
+  `customerAddress` varchar(50) NOT NULL,
+  `customerPostCode` varchar(16) DEFAULT NULL,
+  `customerBusiness` char(1) DEFAULT NULL,
+  `customerCreditLimit` int DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  `customerCreditInfo` char(16) DEFAULT NULL,
+  PRIMARY KEY (`customerID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `documentfreight` (
   `itemID` char(15) NOT NULL,
   `name` char(50) NOT NULL,
