@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42dc16909f764d638ddf54aa8db333d1" Name="Diagram1">
+        <EntityTypeShape EntityType="edeModel.customer" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.documentfreight" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.edeaccount" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.frieght" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.invoice" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.operationcenter" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.paymentgateway" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.pickuporder" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.shipment" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.staff" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="edeModel.vehicle" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="edeModel.pk_edeaccount_customerID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_invoice_customerID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_shipment_receiver" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_shipment_sender" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_center_id" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_freight_id" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_shipment_no" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_pickuporder_edeID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_shipment_centerID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_staff_centerID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_vehicle_centerID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_shipment_gatewayID" ManuallyRouted="false" />
+        <AssociationConnector Association="edeModel.pk_vehicle_staffID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

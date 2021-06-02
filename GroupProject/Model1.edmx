@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="edeModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="customerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customerPhone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="customerFax" Type="varchar" MaxLength="15" />
+          <Property Name="customerAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customerPostCode" Type="varchar" MaxLength="16" />
+          <Property Name="customerBusiness" Type="char" MaxLength="1" />
+          <Property Name="customerCreditLimit" Type="int" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="customerCreditInfo" Type="char" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="documentfreight">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="serviceType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="serviceOtherType" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="10" />
+          <Property Name="centerID" Type="char" MaxLength="4" />
+          <Property Name="shipmentNo" Type="char" MaxLength="12" />
+          <Property Name="charge" Type="float" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="edeaccount">
+          <Key>
+            <PropertyRef Name="edeID" />
+          </Key>
+          <Property Name="edeID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="customerID" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="loginAccountName" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="loginAccountPw" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="emailNotice" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="frieght">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="weight" Type="float" Nullable="false" />
+          <Property Name="length" Type="float" Nullable="false" />
+          <Property Name="width" Type="float" Nullable="false" />
+          <Property Name="height" Type="float" Nullable="false" />
+          <Property Name="value" Type="float" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="invoiceID" />
+          </Key>
+          <Property Name="invoiceID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="totalDeliveryCost" Type="float" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="255" />
+          <Property Name="verification" Type="char" MaxLength="1" />
+          <Property Name="paymentMethod" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="operationcenter">
+          <Key>
+            <PropertyRef Name="centerID" />
+          </Key>
+          <Property Name="centerID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="district" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="hotlineNum" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="rent" Type="int" Nullable="false" />
+          <Property Name="electricity" Type="int" />
+        </EntityType>
+        <EntityType Name="paymentgateway">
+          <Key>
+            <PropertyRef Name="gatewayID" />
+          </Key>
+          <Property Name="gatewayID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="pickuporder">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="edeID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="pickupDate" Type="date" Nullable="false" />
+          <Property Name="pickupTime" Type="time" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shipment">
+          <Key>
+            <PropertyRef Name="shipmentNo" />
+          </Key>
+          <Property Name="shipmentNo" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="sender" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="receiver" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="centerID" Type="char" MaxLength="4" />
+          <Property Name="gatewayID" Type="char" MaxLength="4" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="insurance" Type="varchar" MaxLength="32" />
+          <Property Name="commodityCode" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="staffID" />
+          </Key>
+          <Property Name="staffID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="centerID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="nationalIDNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contactPhoneNum" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="department" Type="varchar" MaxLength="20" />
+          <Property Name="position" Type="varchar" MaxLength="20" />
+          <Property Name="salary" Type="int" />
+          <Property Name="officePhoneNum" Type="int" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="vehicleID" />
+          </Key>
+          <Property Name="vehicleID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="centerID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="staffID" Type="char" MaxLength="5" />
+        </EntityType>
+        <Association Name="pk_center_id">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="0..1" />
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_edeaccount_customerID">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="edeaccount" Type="Self.edeaccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="edeaccount">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_freight_id">
+          <End Role="frieght" Type="Self.frieght" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="frieght">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_invoice_customerID">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_pickuporder_edeID">
+          <End Role="edeaccount" Type="Self.edeaccount" Multiplicity="1" />
+          <End Role="pickuporder" Type="Self.pickuporder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="edeaccount">
+              <PropertyRef Name="edeID" />
+            </Principal>
+            <Dependent Role="pickuporder">
+              <PropertyRef Name="edeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="0..1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_gatewayID">
+          <End Role="paymentgateway" Type="Self.paymentgateway" Multiplicity="0..1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paymentgateway">
+              <PropertyRef Name="gatewayID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="gatewayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_no">
+          <End Role="shipment" Type="Self.shipment" Multiplicity="0..1" />
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shipment">
+              <PropertyRef Name="shipmentNo" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="shipmentNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_receiver">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="receiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_sender">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_staff_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_vehicle_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_vehicle_staffID">
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="staffID" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="staffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="edeModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="documentfreight" EntityType="Self.documentfreight" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="edeaccount" EntityType="Self.edeaccount" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="frieght" EntityType="Self.frieght" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="invoice" EntityType="Self.invoice" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="operationcenter" EntityType="Self.operationcenter" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="paymentgateway" EntityType="Self.paymentgateway" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="pickuporder" EntityType="Self.pickuporder" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="shipment" EntityType="Self.shipment" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="ede" store:Type="Tables" />
+          <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="ede" store:Type="Tables" />
+          <AssociationSet Name="pk_center_id" Association="Self.pk_center_id">
+            <End Role="operationcenter" EntitySet="operationcenter" />
+            <End Role="documentfreight" EntitySet="documentfreight" />
+          </AssociationSet>
+          <AssociationSet Name="pk_edeaccount_customerID" Association="Self.pk_edeaccount_customerID">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="edeaccount" EntitySet="edeaccount" />
+          </AssociationSet>
+          <AssociationSet Name="pk_freight_id" Association="Self.pk_freight_id">
+            <End Role="frieght" EntitySet="frieght" />
+            <End Role="documentfreight" EntitySet="documentfreight" />
+          </AssociationSet>
+          <AssociationSet Name="pk_invoice_customerID" Association="Self.pk_invoice_customerID">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="pk_pickuporder_edeID" Association="Self.pk_pickuporder_edeID">
+            <End Role="edeaccount" EntitySet="edeaccount" />
+            <End Role="pickuporder" EntitySet="pickuporder" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_centerID" Association="Self.pk_shipment_centerID">
+            <End Role="operationcenter" EntitySet="operationcenter" />
+            <End Role="shipment" EntitySet="shipment" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_gatewayID" Association="Self.pk_shipment_gatewayID">
+            <End Role="paymentgateway" EntitySet="paymentgateway" />
+            <End Role="shipment" EntitySet="shipment" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_no" Association="Self.pk_shipment_no">
+            <End Role="shipment" EntitySet="shipment" />
+            <End Role="documentfreight" EntitySet="documentfreight" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_receiver" Association="Self.pk_shipment_receiver">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="shipment" EntitySet="shipment" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_sender" Association="Self.pk_shipment_sender">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="shipment" EntitySet="shipment" />
+          </AssociationSet>
+          <AssociationSet Name="pk_staff_centerID" Association="Self.pk_staff_centerID">
+            <End Role="operationcenter" EntitySet="operationcenter" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="pk_vehicle_centerID" Association="Self.pk_vehicle_centerID">
+            <End Role="operationcenter" EntitySet="operationcenter" />
+            <End Role="vehicle" EntitySet="vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="pk_vehicle_staffID" Association="Self.pk_vehicle_staffID">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="vehicle" EntitySet="vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="edeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerFax" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="customerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerPostCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="customerBusiness" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="customerCreditLimit" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="customerCreditInfo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="edeaccounts" Relationship="Self.pk_edeaccount_customerID" FromRole="customer" ToRole="edeaccount" />
+          <NavigationProperty Name="invoices" Relationship="Self.pk_invoice_customerID" FromRole="customer" ToRole="invoice" />
+          <NavigationProperty Name="shipments" Relationship="Self.pk_shipment_receiver" FromRole="customer" ToRole="shipment" />
+          <NavigationProperty Name="shipments1" Relationship="Self.pk_shipment_sender" FromRole="customer" ToRole="shipment" />
+        </EntityType>
+        <EntityType Name="documentfreight">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="serviceType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="serviceOtherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="centerID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="shipmentNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="charge" Type="Single" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="operationcenter" Relationship="Self.pk_center_id" FromRole="documentfreight" ToRole="operationcenter" />
+          <NavigationProperty Name="frieght" Relationship="Self.pk_freight_id" FromRole="documentfreight" ToRole="frieght" />
+          <NavigationProperty Name="shipment" Relationship="Self.pk_shipment_no" FromRole="documentfreight" ToRole="shipment" />
+        </EntityType>
+        <EntityType Name="edeaccount">
+          <Key>
+            <PropertyRef Name="edeID" />
+          </Key>
+          <Property Name="edeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="loginAccountName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="loginAccountPw" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailNotice" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.pk_edeaccount_customerID" FromRole="edeaccount" ToRole="customer" />
+          <NavigationProperty Name="pickuporders" Relationship="Self.pk_pickuporder_edeID" FromRole="edeaccount" ToRole="pickuporder" />
+        </EntityType>
+        <EntityType Name="frieght">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Single" Nullable="false" />
+          <Property Name="length" Type="Single" Nullable="false" />
+          <Property Name="width" Type="Single" Nullable="false" />
+          <Property Name="height" Type="Single" Nullable="false" />
+          <Property Name="value" Type="Single" />
+          <NavigationProperty Name="documentfreight" Relationship="Self.pk_freight_id" FromRole="frieght" ToRole="documentfreight" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="invoiceID" />
+          </Key>
+          <Property Name="invoiceID" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="totalDeliveryCost" Type="Single" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="verification" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="paymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.pk_invoice_customerID" FromRole="invoice" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="operationcenter">
+          <Key>
+            <PropertyRef Name="centerID" />
+          </Key>
+          <Property Name="centerID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hotlineNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rent" Type="Int32" Nullable="false" />
+          <Property Name="electricity" Type="Int32" />
+          <NavigationProperty Name="documentfreights" Relationship="Self.pk_center_id" FromRole="operationcenter" ToRole="documentfreight" />
+          <NavigationProperty Name="shipments" Relationship="Self.pk_shipment_centerID" FromRole="operationcenter" ToRole="shipment" />
+          <NavigationProperty Name="staffs" Relationship="Self.pk_staff_centerID" FromRole="operationcenter" ToRole="staff" />
+          <NavigationProperty Name="vehicles" Relationship="Self.pk_vehicle_centerID" FromRole="operationcenter" ToRole="vehicle" />
+        </EntityType>
+        <EntityType Name="paymentgateway">
+          <Key>
+            <PropertyRef Name="gatewayID" />
+          </Key>
+          <Property Name="gatewayID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="shipments" Relationship="Self.pk_shipment_gatewayID" FromRole="paymentgateway" ToRole="shipment" />
+        </EntityType>
+        <EntityType Name="pickuporder">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="edeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pickupDate" Type="DateTime" Nullable="false" />
+          <Property Name="pickupTime" Type="Time" Nullable="false" />
+          <NavigationProperty Name="edeaccount" Relationship="Self.pk_pickuporder_edeID" FromRole="pickuporder" ToRole="edeaccount" />
+        </EntityType>
+        <EntityType Name="shipment">
+          <Key>
+            <PropertyRef Name="shipmentNo" />
+          </Key>
+          <Property Name="shipmentNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sender" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="receiver" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="centerID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="gatewayID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="insurance" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="commodityCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.pk_shipment_receiver" FromRole="shipment" ToRole="customer" />
+          <NavigationProperty Name="customer1" Relationship="Self.pk_shipment_sender" FromRole="shipment" ToRole="customer" />
+          <NavigationProperty Name="documentfreights" Relationship="Self.pk_shipment_no" FromRole="shipment" ToRole="documentfreight" />
+          <NavigationProperty Name="operationcenter" Relationship="Self.pk_shipment_centerID" FromRole="shipment" ToRole="operationcenter" />
+          <NavigationProperty Name="paymentgateway" Relationship="Self.pk_shipment_gatewayID" FromRole="shipment" ToRole="paymentgateway" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="staffID" />
+          </Key>
+          <Property Name="staffID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" />
+          <Property Name="centerID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nationalIDNum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contactPhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="department" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="officePhoneNum" Type="Int32" />
+          <NavigationProperty Name="operationcenter" Relationship="Self.pk_staff_centerID" FromRole="staff" ToRole="operationcenter" />
+          <NavigationProperty Name="vehicles" Relationship="Self.pk_vehicle_staffID" FromRole="staff" ToRole="vehicle" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="vehicleID" />
+          </Key>
+          <Property Name="vehicleID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="centerID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="staffID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="operationcenter" Relationship="Self.pk_vehicle_centerID" FromRole="vehicle" ToRole="operationcenter" />
+          <NavigationProperty Name="staff" Relationship="Self.pk_vehicle_staffID" FromRole="vehicle" ToRole="staff" />
+        </EntityType>
+        <Association Name="pk_edeaccount_customerID">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="edeaccount" Type="Self.edeaccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="edeaccount">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_invoice_customerID">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_receiver">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="receiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_sender">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_center_id">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="0..1" />
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_freight_id">
+          <End Role="frieght" Type="Self.frieght" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="frieght">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_no">
+          <End Role="shipment" Type="Self.shipment" Multiplicity="0..1" />
+          <End Role="documentfreight" Type="Self.documentfreight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shipment">
+              <PropertyRef Name="shipmentNo" />
+            </Principal>
+            <Dependent Role="documentfreight">
+              <PropertyRef Name="shipmentNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_pickuporder_edeID">
+          <End Role="edeaccount" Type="Self.edeaccount" Multiplicity="1" />
+          <End Role="pickuporder" Type="Self.pickuporder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="edeaccount">
+              <PropertyRef Name="edeID" />
+            </Principal>
+            <Dependent Role="pickuporder">
+              <PropertyRef Name="edeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="0..1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_staff_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_vehicle_centerID">
+          <End Role="operationcenter" Type="Self.operationcenter" Multiplicity="1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operationcenter">
+              <PropertyRef Name="centerID" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="centerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_shipment_gatewayID">
+          <End Role="paymentgateway" Type="Self.paymentgateway" Multiplicity="0..1" />
+          <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paymentgateway">
+              <PropertyRef Name="gatewayID" />
+            </Principal>
+            <Dependent Role="shipment">
+              <PropertyRef Name="gatewayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_vehicle_staffID">
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="staffID" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="staffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="edeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="documentfreights" EntityType="Self.documentfreight" />
+          <EntitySet Name="edeaccounts" EntityType="Self.edeaccount" />
+          <EntitySet Name="frieghts" EntityType="Self.frieght" />
+          <EntitySet Name="invoices" EntityType="Self.invoice" />
+          <EntitySet Name="operationcenters" EntityType="Self.operationcenter" />
+          <EntitySet Name="paymentgateways" EntityType="Self.paymentgateway" />
+          <EntitySet Name="pickuporders" EntityType="Self.pickuporder" />
+          <EntitySet Name="shipments" EntityType="Self.shipment" />
+          <EntitySet Name="staffs" EntityType="Self.staff" />
+          <EntitySet Name="vehicles" EntityType="Self.vehicle" />
+          <AssociationSet Name="pk_edeaccount_customerID" Association="Self.pk_edeaccount_customerID">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="edeaccount" EntitySet="edeaccounts" />
+          </AssociationSet>
+          <AssociationSet Name="pk_invoice_customerID" Association="Self.pk_invoice_customerID">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="invoice" EntitySet="invoices" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_receiver" Association="Self.pk_shipment_receiver">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="shipment" EntitySet="shipments" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_sender" Association="Self.pk_shipment_sender">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="shipment" EntitySet="shipments" />
+          </AssociationSet>
+          <AssociationSet Name="pk_center_id" Association="Self.pk_center_id">
+            <End Role="operationcenter" EntitySet="operationcenters" />
+            <End Role="documentfreight" EntitySet="documentfreights" />
+          </AssociationSet>
+          <AssociationSet Name="pk_freight_id" Association="Self.pk_freight_id">
+            <End Role="frieght" EntitySet="frieghts" />
+            <End Role="documentfreight" EntitySet="documentfreights" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_no" Association="Self.pk_shipment_no">
+            <End Role="shipment" EntitySet="shipments" />
+            <End Role="documentfreight" EntitySet="documentfreights" />
+          </AssociationSet>
+          <AssociationSet Name="pk_pickuporder_edeID" Association="Self.pk_pickuporder_edeID">
+            <End Role="edeaccount" EntitySet="edeaccounts" />
+            <End Role="pickuporder" EntitySet="pickuporders" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_centerID" Association="Self.pk_shipment_centerID">
+            <End Role="operationcenter" EntitySet="operationcenters" />
+            <End Role="shipment" EntitySet="shipments" />
+          </AssociationSet>
+          <AssociationSet Name="pk_staff_centerID" Association="Self.pk_staff_centerID">
+            <End Role="operationcenter" EntitySet="operationcenters" />
+            <End Role="staff" EntitySet="staffs" />
+          </AssociationSet>
+          <AssociationSet Name="pk_vehicle_centerID" Association="Self.pk_vehicle_centerID">
+            <End Role="operationcenter" EntitySet="operationcenters" />
+            <End Role="vehicle" EntitySet="vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="pk_shipment_gatewayID" Association="Self.pk_shipment_gatewayID">
+            <End Role="paymentgateway" EntitySet="paymentgateways" />
+            <End Role="shipment" EntitySet="shipments" />
+          </AssociationSet>
+          <AssociationSet Name="pk_vehicle_staffID" Association="Self.pk_vehicle_staffID">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="vehicle" EntitySet="vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="edeModelStoreContainer" CdmEntityContainer="edeEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="edeModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+                <ScalarProperty Name="customerFax" ColumnName="customerFax" />
+                <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+                <ScalarProperty Name="customerPostCode" ColumnName="customerPostCode" />
+                <ScalarProperty Name="customerBusiness" ColumnName="customerBusiness" />
+                <ScalarProperty Name="customerCreditLimit" ColumnName="customerCreditLimit" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="customerCreditInfo" ColumnName="customerCreditInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documentfreights">
+            <EntityTypeMapping TypeName="edeModel.documentfreight">
+              <MappingFragment StoreEntitySet="documentfreight">
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="serviceType" ColumnName="serviceType" />
+                <ScalarProperty Name="serviceOtherType" ColumnName="serviceOtherType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="shipmentNo" ColumnName="shipmentNo" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="edeaccounts">
+            <EntityTypeMapping TypeName="edeModel.edeaccount">
+              <MappingFragment StoreEntitySet="edeaccount">
+                <ScalarProperty Name="edeID" ColumnName="edeID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="loginAccountName" ColumnName="loginAccountName" />
+                <ScalarProperty Name="loginAccountPw" ColumnName="loginAccountPw" />
+                <ScalarProperty Name="emailNotice" ColumnName="emailNotice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="frieghts">
+            <EntityTypeMapping TypeName="edeModel.frieght">
+              <MappingFragment StoreEntitySet="frieght">
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="edeModel.invoice">
+              <MappingFragment StoreEntitySet="invoice">
+                <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="totalDeliveryCost" ColumnName="totalDeliveryCost" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="verification" ColumnName="verification" />
+                <ScalarProperty Name="paymentMethod" ColumnName="paymentMethod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operationcenters">
+            <EntityTypeMapping TypeName="edeModel.operationcenter">
+              <MappingFragment StoreEntitySet="operationcenter">
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="hotlineNum" ColumnName="hotlineNum" />
+                <ScalarProperty Name="rent" ColumnName="rent" />
+                <ScalarProperty Name="electricity" ColumnName="electricity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymentgateways">
+            <EntityTypeMapping TypeName="edeModel.paymentgateway">
+              <MappingFragment StoreEntitySet="paymentgateway">
+                <ScalarProperty Name="gatewayID" ColumnName="gatewayID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pickuporders">
+            <EntityTypeMapping TypeName="edeModel.pickuporder">
+              <MappingFragment StoreEntitySet="pickuporder">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="edeID" ColumnName="edeID" />
+                <ScalarProperty Name="pickupDate" ColumnName="pickupDate" />
+                <ScalarProperty Name="pickupTime" ColumnName="pickupTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shipments">
+            <EntityTypeMapping TypeName="edeModel.shipment">
+              <MappingFragment StoreEntitySet="shipment">
+                <ScalarProperty Name="shipmentNo" ColumnName="shipmentNo" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="gatewayID" ColumnName="gatewayID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="insurance" ColumnName="insurance" />
+                <ScalarProperty Name="commodityCode" ColumnName="commodityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="edeModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="staffID" ColumnName="staffID" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="nationalIDNum" ColumnName="nationalIDNum" />
+                <ScalarProperty Name="contactPhoneNum" ColumnName="contactPhoneNum" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="officePhoneNum" ColumnName="officePhoneNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicles">
+            <EntityTypeMapping TypeName="edeModel.vehicle">
+              <MappingFragment StoreEntitySet="vehicle">
+                <ScalarProperty Name="vehicleID" ColumnName="vehicleID" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="centerID" ColumnName="centerID" />
+                <ScalarProperty Name="staffID" ColumnName="staffID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
