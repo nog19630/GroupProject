@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace GroupProject
 {
     public partial class LoginForm : Form
     {
-        string connection = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.Setting"].ConnectionString;
+        string connection = @"server=localhost;user id=root;database=ede;password=root";
         public LoginForm()
         {
             InitializeComponent();
@@ -28,7 +29,9 @@ namespace GroupProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            using (MySqlConnection mysqlcon = new MySqlConnection(connection)) { 
+                
+            }
         }
     }
 }
