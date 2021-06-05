@@ -47,7 +47,7 @@ namespace GroupProject
             this.btn_Register.TabIndex = 15;
             this.btn_Register.Text = "Register";
             this.btn_Register.UseVisualStyleBackColor = true;
-            this.btn_Register.Click += new System.EventHandler(this.button3_Click);
+            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
             // 
             // btn_Exit
             // 

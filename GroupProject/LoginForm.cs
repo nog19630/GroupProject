@@ -22,13 +22,6 @@ namespace GroupProject
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            RegisterForm frm = new RegisterForm();
-            frm.TopMost = true;
-            frm.Show();
-        }
-
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
@@ -65,10 +58,15 @@ namespace GroupProject
             {
                 MessageBox.Show("Login Failure");
             }
+        }
+
+        private void btn_Register_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            this.Hide();
+            registerForm.ShowDialog();
 
 
         }
-
-
     }
 }

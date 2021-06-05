@@ -23,14 +23,15 @@ namespace GroupProject
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Submit_Click(object sender, EventArgs e)
         {
             // insert example 
             string insertQuery = String.Format("INSERT INTO ede.customer (customerID, customerName, customerPhone, customerAddress) VALUES ('{0}', '{1}', '{2}', '{3}')", tbx_EmailAddress.Text, tbx_UserName.Text, tbx_PhoneNumber.Text, tbx_Address.Text);
             if (DatabaseConnector.executeQuery(insertQuery))
             {
                 MessageBox.Show("Register Success");
-            } else
+            }
+            else
             {
                 MessageBox.Show("Register Failure");
             }

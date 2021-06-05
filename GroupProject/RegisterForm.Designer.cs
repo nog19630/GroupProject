@@ -75,7 +75,7 @@ namespace GroupProject
             this.btn_Submit.TabIndex = 34;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.UseVisualStyleBackColor = true;
-            this.btn_Submit.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // tbx_Address
             // 
