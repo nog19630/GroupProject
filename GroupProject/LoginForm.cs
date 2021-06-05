@@ -27,6 +27,38 @@ namespace GroupProject
             frm.Show();
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private bool IsLogin(string user, string pass)
+        {
+            string query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
+            try
+            {
+                return DatabaseConnector.matchQuery(query);
+            }
+            catch (Exception ex)
+            {
+                DatabaseConnector.closeDatabase();
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            string user = tbx_AccountName.Text;
+            string pass = tbx_Password.Text;
+
+            if (IsLogin(user, pass))
+            {
+                MessageBox.Show("Login Success");
+            } else
+            {
+                MessageBox.Show("Login Failure");
+            }
+        }
     }
 }

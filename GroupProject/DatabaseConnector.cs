@@ -16,12 +16,12 @@ namespace GroupProject
         private static string port = "3306";
         private static string userID = "root";
         private static string password = "root";
-        private static MySqlConnection connection;
+        private static MySqlConnection connection = new MySqlConnection();
         private static DataSet ds = new DataSet();
         private static string[] DBtable = { "customer", "documentfreight", "edeaccount", "frieght", "invoice", "operationcenter", "paymentgateway", "pickuporder", "shipment", "staff", "vehicle" };
         private static MySqlCommand command;
 
-        public static void connectDatabase()
+        public static bool connectDatabase()
         {
             try
             {
@@ -36,29 +36,44 @@ namespace GroupProject
                         MySqlDataAdapter adapter = new MySqlDataAdapter(sqlString, connection);
                         adapter.Fill(ds, DBtable[i]);
                     }
+                    return true;
                 }
                 else
                 {
                     ds = null;
+                    MessageBox.Show("Connection Failed");
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         public static void closeDatabase()
         {
-            connection.Close();
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
         }
 
         public static DataSet getDataSet()
         {
-            return ds;
+            connectDatabase();
+            DataSet tempDs = ds;
+            closeDatabase();
+            return tempDs;
         }
 
-        public static void executeQuery(string query)
+        public static MySqlConnection getConnetion()
+        {
+            return connection;
+        }
+
+        public static bool executeQuery(string query)
         {
             try
             {
@@ -66,15 +81,16 @@ namespace GroupProject
                 command = new MySqlCommand(query, connection);
                 if (command.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Query Executed");
+                    return true;
                 } 
                 else {
-                    MessageBox.Show("Query Not Executed");
+                    return false;
                 }
             } 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
             finally
             {
@@ -82,6 +98,38 @@ namespace GroupProject
             }
             
         }
+
+        public static bool matchQuery(string query)
+        {
+            try
+            {
+                connectDatabase();
+                command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    reader.Close();
+                    return true;
+                }
+                else
+                {
+                    reader.Close();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                closeDatabase();
+            }
+        }
     }
+
+    
 
 }

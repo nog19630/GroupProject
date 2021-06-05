@@ -66,6 +66,7 @@ namespace GroupProject
             this.btn_Login.TabIndex = 13;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // lbl_Title
             // 
@@ -124,6 +125,7 @@ namespace GroupProject
             this.Controls.Add(this.lbl_AccountName);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
