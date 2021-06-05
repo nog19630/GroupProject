@@ -14,7 +14,9 @@ namespace GroupProject
 {
     public partial class LoginForm : Form
     {
-        string connection = @"server=localhost;user id=root;database=ede;password=root";
+        public static bool UserSuccessfullyAuthenticated = false;
+
+
         public LoginForm()
         {
             InitializeComponent();
@@ -55,6 +57,9 @@ namespace GroupProject
             if (IsLogin(user, pass))
             {
                 MessageBox.Show("Login Success");
+                UserSuccessfullyAuthenticated = true;
+                this.Close();
+
             } else
             {
                 MessageBox.Show("Login Failure");

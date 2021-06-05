@@ -35,6 +35,7 @@ namespace GroupProject
                         string sqlString = "SELECT * FROM ede." + DBtable[i];
                         MySqlDataAdapter adapter = new MySqlDataAdapter(sqlString, connection);
                         adapter.Fill(ds, DBtable[i]);
+                        adapter.Dispose();
                     }
                     return true;
                 }

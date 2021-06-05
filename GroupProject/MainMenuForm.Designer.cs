@@ -67,7 +67,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(768, 414);
+            this.tabControl1.Size = new System.Drawing.Size(971, 556);
             this.tabControl1.TabIndex = 14;
             // 
             // tbp_FunctionForm
@@ -75,7 +75,7 @@
             this.tbp_FunctionForm.Location = new System.Drawing.Point(4, 22);
             this.tbp_FunctionForm.Name = "tbp_FunctionForm";
             this.tbp_FunctionForm.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_FunctionForm.Size = new System.Drawing.Size(760, 388);
+            this.tbp_FunctionForm.Size = new System.Drawing.Size(963, 530);
             this.tbp_FunctionForm.TabIndex = 0;
             this.tbp_FunctionForm.Text = "Book Pickup";
             this.tbp_FunctionForm.UseVisualStyleBackColor = true;
@@ -142,9 +142,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 444);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 591);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(768, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(971, 22);
             this.statusStrip1.TabIndex = 16;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -167,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 466);
+            this.ClientSize = new System.Drawing.Size(971, 613);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lbl_Title);
