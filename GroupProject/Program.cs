@@ -19,8 +19,7 @@ namespace GroupProject
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
             if (LoginForm.UserSuccessfullyAuthenticated)
-            {
-                
+            { 
                 Application.Run(new MainMenuForm());
             }
         }

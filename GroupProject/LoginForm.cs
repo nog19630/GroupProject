@@ -60,17 +60,15 @@ namespace GroupProject
                 UserSuccessfullyAuthenticated = true;
                 this.Close();
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Login Failure");
             }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
+
         }
+
+
     }
-
-
 }
-
