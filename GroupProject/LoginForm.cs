@@ -27,35 +27,37 @@ namespace GroupProject
             frm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection mysqlcon = new MySqlConnection(connection)) {
-                int i = 0;
-                mysqlcon.Open();
-                String command = "select * from edeaccount where loginAccountName = @name and loginAccountPw = @password;";
-                MySqlCommand cmd = new MySqlCommand(command, mysqlcon);
-                cmd.Parameters.AddWithValue("@name", txt_username.Text);
-                cmd.Parameters.AddWithValue("@password", txt_password.Text);
-                cmd.CommandType = CommandType.Text;
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = cmd;
-                cmd.ExecuteNonQuery();
-                da.Fill(dt); //MySqlDataReader dr = cmd.ExecuteReader(); Use this when passing arguments through forms is needed
-                i = Convert.ToInt32(dt.Rows.Count.ToString());
 
-                    if (i == 0)
-                    {
-                        MessageBox.Show("Incorrect credentials");
-                    }
-                    else
-                    {
-                            MainMenuForm fm1 = new MainMenuForm();
-                            fm1.Show();
-                            this.Hide();
-                    }
-                }
+        }
 
+        private bool IsLogin(string user, string pass)
+        {
+            string query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
+            try
+            {
+                return DatabaseConnector.matchQuery(query);
+            }
+            catch (Exception ex)
+            {
+                DatabaseConnector.closeDatabase();
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            string user = tbx_AccountName.Text;
+            string pass = tbx_Password.Text;
+
+            if (IsLogin(user, pass))
+            {
+                MessageBox.Show("Login Success");
+            } else
+            {
+                MessageBox.Show("Login Failure");
             }
 
         private void button2_Click(object sender, EventArgs e)
