@@ -41,9 +41,9 @@ namespace GroupProject
             // 
             // btn_Register
             // 
-            this.btn_Register.Location = new System.Drawing.Point(178, 178);
+            this.btn_Register.Location = new System.Drawing.Point(178, 193);
             this.btn_Register.Name = "btn_Register";
-            this.btn_Register.Size = new System.Drawing.Size(100, 27);
+            this.btn_Register.Size = new System.Drawing.Size(100, 29);
             this.btn_Register.TabIndex = 15;
             this.btn_Register.Text = "Register";
             this.btn_Register.UseVisualStyleBackColor = true;
@@ -51,18 +51,19 @@ namespace GroupProject
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(299, 178);
+            this.btn_Exit.Location = new System.Drawing.Point(299, 193);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(100, 27);
+            this.btn_Exit.Size = new System.Drawing.Size(100, 29);
             this.btn_Exit.TabIndex = 14;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(57, 178);
+            this.btn_Login.Location = new System.Drawing.Point(57, 193);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(100, 27);
+            this.btn_Login.Size = new System.Drawing.Size(100, 29);
             this.btn_Login.TabIndex = 13;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
@@ -72,7 +73,7 @@ namespace GroupProject
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(55, 40);
+            this.lbl_Title.Location = new System.Drawing.Point(55, 43);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(349, 23);
             this.lbl_Title.TabIndex = 12;
@@ -80,41 +81,41 @@ namespace GroupProject
             // 
             // tbx_Password
             // 
-            this.tbx_Password.Location = new System.Drawing.Point(138, 135);
+            this.tbx_Password.Location = new System.Drawing.Point(138, 146);
             this.tbx_Password.Name = "tbx_Password";
-            this.tbx_Password.Size = new System.Drawing.Size(262, 22);
+            this.tbx_Password.Size = new System.Drawing.Size(262, 20);
             this.tbx_Password.TabIndex = 11;
             // 
             // tbx_AccountName
             // 
-            this.tbx_AccountName.Location = new System.Drawing.Point(138, 96);
+            this.tbx_AccountName.Location = new System.Drawing.Point(138, 104);
             this.tbx_AccountName.Name = "tbx_AccountName";
-            this.tbx_AccountName.Size = new System.Drawing.Size(262, 22);
+            this.tbx_AccountName.Size = new System.Drawing.Size(262, 20);
             this.tbx_AccountName.TabIndex = 10;
             // 
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(55, 135);
+            this.lbl_Password.Location = new System.Drawing.Point(55, 146);
             this.lbl_Password.Name = "lbl_Password";
-            this.lbl_Password.Size = new System.Drawing.Size(51, 12);
+            this.lbl_Password.Size = new System.Drawing.Size(56, 13);
             this.lbl_Password.TabIndex = 9;
             this.lbl_Password.Text = "Password:";
             // 
             // lbl_AccountName
             // 
             this.lbl_AccountName.AutoSize = true;
-            this.lbl_AccountName.Location = new System.Drawing.Point(55, 99);
+            this.lbl_AccountName.Location = new System.Drawing.Point(55, 107);
             this.lbl_AccountName.Name = "lbl_AccountName";
-            this.lbl_AccountName.Size = new System.Drawing.Size(77, 12);
+            this.lbl_AccountName.Size = new System.Drawing.Size(81, 13);
             this.lbl_AccountName.TabIndex = 8;
             this.lbl_AccountName.Text = "Account Name:";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 250);
+            this.ClientSize = new System.Drawing.Size(470, 271);
             this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Login);

@@ -68,5 +68,12 @@ namespace GroupProject
 
 
         }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
+                this.Close();
+            }
+        }
     }
 }
