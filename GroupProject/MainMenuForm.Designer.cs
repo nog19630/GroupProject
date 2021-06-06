@@ -60,6 +60,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tbp_FunctionForm);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -165,6 +166,7 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(28, 30);
@@ -174,6 +176,7 @@
             this.button1.Text = "Fill airway bill";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // MainMenuForm
             // 
@@ -211,7 +214,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+
         private System.Windows.Forms.Button button1;
+
     }
 }
 

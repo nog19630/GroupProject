@@ -29,9 +29,9 @@ namespace GroupProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lst_Order = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Search = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,13 +61,13 @@ namespace GroupProject
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lst_Order
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(20, 70);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(726, 316);
-            this.listBox1.TabIndex = 3;
+            this.lst_Order.FormattingEnabled = true;
+            this.lst_Order.Location = new System.Drawing.Point(20, 70);
+            this.lst_Order.Name = "lst_Order";
+            this.lst_Order.Size = new System.Drawing.Size(726, 316);
+            this.lst_Order.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -76,14 +76,15 @@ namespace GroupProject
             this.textBox1.Size = new System.Drawing.Size(500, 20);
             this.textBox1.TabIndex = 2;
             // 
-            // button1
+            // btn_Search
             // 
-            this.button1.Location = new System.Drawing.Point(663, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 24);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Search.Location = new System.Drawing.Point(663, 20);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(83, 24);
+            this.btn_Search.TabIndex = 0;
+            this.btn_Search.Text = "Search";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -191,10 +192,10 @@ namespace GroupProject
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.lst_Order);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btn_Search);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(769, 404);
@@ -334,6 +335,7 @@ namespace GroupProject
             this.Controls.Add(this.button2);
             this.Name = "BookPickupForm";
             this.Text = "BookPickupForm";
+            this.Load += new System.EventHandler(this.BookPickupForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -345,9 +347,9 @@ namespace GroupProject
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lst_Order;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
