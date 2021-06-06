@@ -114,6 +114,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="airwaybill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="airwaybill.Designer.cs">
+      <DependentUpon>airwaybill.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookPickupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="airwaybill.resx">
+      <DependentUpon>airwaybill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookPickupForm.resx">
       <DependentUpon>BookPickupForm.cs</DependentUpon>
     </EmbeddedResource>
