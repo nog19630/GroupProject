@@ -42,8 +42,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +112,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button1);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(963, 576);
@@ -164,14 +166,17 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabPage1
+
+            // button1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(963, 576);
-            this.tabPage1.TabIndex = 6;
-            this.tabPage1.Text = "Create/Edit Pickup";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(28, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Fill airway bill";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // MainMenuForm
             // 
@@ -186,6 +191,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -208,7 +214,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TabPage tabPage1;
+
+        private System.Windows.Forms.Button button1;
+
     }
 }
 
