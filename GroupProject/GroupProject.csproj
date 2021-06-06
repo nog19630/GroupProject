@@ -148,6 +148,9 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="airwaybill.resx">
+      <DependentUpon>airwaybill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookPickupForm.resx">
       <DependentUpon>BookPickupForm.cs</DependentUpon>
     </EmbeddedResource>
