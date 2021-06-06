@@ -134,7 +134,6 @@ namespace GroupProject
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("@name", user);
             cmd.CommandType = CommandType.Text;
-            cmd.CommandType = CommandType.Text;
             DataTable dt = new DataTable();
             MySqlDataReader dr = cmd.ExecuteReader();
             dt.Load(dr);
