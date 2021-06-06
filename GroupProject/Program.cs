@@ -17,7 +17,7 @@ namespace GroupProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForm());
+            Application.Run(new LoginForm());
             if (LoginForm.UserSuccessfullyAuthenticated)
             { 
                 Application.Run(new MainMenuForm());
