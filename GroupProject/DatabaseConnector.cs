@@ -129,6 +129,16 @@ namespace GroupProject
                 closeDatabase();
             }
         }
+
+        public static string getUserID(string user, string sql) {
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@name", user);
+            cmd.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dt.Load(dr);
+            return dr["customerID"].ToString();
+        }
     }
 
     

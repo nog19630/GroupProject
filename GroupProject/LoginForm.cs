@@ -52,6 +52,10 @@ namespace GroupProject
                 MessageBox.Show("Login Success");
                 UserSuccessfullyAuthenticated = true;
                 this.Close();
+                string cmd = "SELECT * FROM edeaccount WHERE loginAccountName = @name;";
+                string cusID = DatabaseConnector.getUserID(user, cmd);
+                MainMenuForm mainfrm = new MainMenuForm(cusID); //This is used for Data grid view for airwaybill.cs
+                mainfrm.Show();
 
             }
             else

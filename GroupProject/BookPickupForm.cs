@@ -12,9 +12,21 @@ namespace GroupProject
 {
     public partial class BookPickupForm : Form
     {
-        public BookPickupForm()
+        MainMenuForm mainfrm;
+        public BookPickupForm(MainMenuForm frm)
         {
             InitializeComponent();
+            this.mainfrm = frm;
+        }
+
+        private void BookPickupForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
