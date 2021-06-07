@@ -20,7 +20,7 @@ namespace GroupProject
             Application.Run(new LoginForm());
             if (LoginForm.UserSuccessfullyAuthenticated)
             { 
-                Application.Run(new MainMenuForm());
+                Application.Run(new LoginForm());
             }
         }
     }
