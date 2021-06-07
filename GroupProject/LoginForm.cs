@@ -51,11 +51,12 @@ namespace GroupProject
             {
                 MessageBox.Show("Login Success");
                 UserSuccessfullyAuthenticated = true;
-                this.Close();
                 string cmd = "SELECT * FROM edeaccount WHERE loginAccountName = @name;";
                 string cusID = DatabaseConnector.getUserID(user, cmd);
-                MainMenuForm mainfrm = new MainMenuForm(cusID); //This is used for Data grid view for airwaybill.cs
+                MainMenuForm mainfrm = new MainMenuForm(cusID); //Passing in customerID for Listboxes or Datagridview to show data according to the cusID
+                DatabaseConnector.closeDatabase();
                 mainfrm.Show();
+                this.Hide();
 
             }
             else
@@ -67,7 +68,6 @@ namespace GroupProject
         private void btn_Register_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
-            this.Hide();
             registerForm.ShowDialog();
 
 

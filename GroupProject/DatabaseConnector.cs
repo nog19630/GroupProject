@@ -15,6 +15,7 @@ namespace GroupProject
         private static string dataSource = "localhost";
         private static string port = "3306";
         private static string userID = "root";
+        private static string database = "ede";
         private static string password = "root";
         private static MySqlConnection connection = new MySqlConnection();
         private static DataSet ds = new DataSet();
@@ -25,7 +26,7 @@ namespace GroupProject
         {
             try
             {
-                string constructorString = String.Format("Data Source={0};Port={1};User Id={2};Password={3}", dataSource, port, userID, password);
+                string constructorString = String.Format("Data Source={0};Port={1};User Id={2};database ={3};Password={4}", dataSource, port, userID, database,password);
                 connection = new MySqlConnection(constructorString);
                 connection.Open();
                 if (connection.State == ConnectionState.Open)
@@ -131,13 +132,15 @@ namespace GroupProject
         }
 
         public static string getUserID(string user, string sql) {
+            connectDatabase();
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("@name", user);
             cmd.CommandType = CommandType.Text;
-            DataTable dt = new DataTable();
-            MySqlDataReader dr = cmd.ExecuteReader();
-            dt.Load(dr);
-            return dr["customerID"].ToString();
+            using (MySqlDataReader dr = cmd.ExecuteReader()) {
+                dr.Read();
+                return dr["customerID"].ToString();
+            }
+                
         }
     }
 
