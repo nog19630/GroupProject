@@ -77,7 +77,19 @@ namespace GroupProject
         {
             if (MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
                 this.Close();
+                System.Windows.Forms.Application.Exit();
             }
+        }
+
+        private void btnTestUse_Click(object sender, EventArgs e)
+        {
+            UserSuccessfullyAuthenticated = true;
+            string cmd = "SELECT * FROM edeaccount WHERE loginAccountName = @name;";
+            string cusID = DatabaseConnector.getUserID("root1234", cmd);
+            MainMenuForm mainfrm = new MainMenuForm(cusID); //Passing in customerID for Listboxes or Datagridview to show data according to the cusID
+            DatabaseConnector.closeDatabase();
+            mainfrm.Show();
+            this.Hide();
         }
     }
 }
