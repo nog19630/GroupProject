@@ -36,15 +36,19 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgv_shipments = new System.Windows.Forms.DataGridView();
+            this.btn_fillbill = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +64,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tbp_FunctionForm);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -112,13 +115,43 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button1);
+            this.tabPage5.Controls.Add(this.label2);
+            this.tabPage5.Controls.Add(this.dgv_shipments);
+            this.tabPage5.Controls.Add(this.btn_fillbill);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(963, 576);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Submit Airway Bill";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Shipments to be paid:";
+            // 
+            // dgv_shipments
+            // 
+            this.dgv_shipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_shipments.Location = new System.Drawing.Point(17, 30);
+            this.dgv_shipments.Name = "dgv_shipments";
+            this.dgv_shipments.Size = new System.Drawing.Size(621, 532);
+            this.dgv_shipments.TabIndex = 7;
+            // 
+            // btn_fillbill
+            // 
+            this.btn_fillbill.Location = new System.Drawing.Point(659, 175);
+            this.btn_fillbill.Name = "btn_fillbill";
+            this.btn_fillbill.Size = new System.Drawing.Size(287, 253);
+            this.btn_fillbill.TabIndex = 6;
+            this.btn_fillbill.Text = "Fill airway bill";
+            this.btn_fillbill.UseVisualStyleBackColor = true;
+            this.btn_fillbill.Click += new System.EventHandler(this.btn_fillbill_Click);
             // 
             // tabPage6
             // 
@@ -166,17 +199,11 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-
-            // button1
+            // timer1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Fill airway bill";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainMenuForm
             // 
@@ -189,9 +216,12 @@
             this.Controls.Add(this.label1);
             this.Name = "MainMenuForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -214,9 +244,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-
-        private System.Windows.Forms.Button button1;
-
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgv_shipments;
+        private System.Windows.Forms.Button btn_fillbill;
     }
 }
 
