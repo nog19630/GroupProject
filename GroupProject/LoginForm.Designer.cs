@@ -83,7 +83,9 @@ namespace GroupProject
             // tbx_Password
             // 
             this.tbx_Password.Location = new System.Drawing.Point(138, 135);
+            this.tbx_Password.MaxLength = 16;
             this.tbx_Password.Name = "tbx_Password";
+            this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(262, 22);
             this.tbx_Password.TabIndex = 11;
             // 
