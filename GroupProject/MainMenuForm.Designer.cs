@@ -137,9 +137,11 @@
             // 
             // dgv_shipments
             // 
+            this.dgv_shipments.AllowUserToAddRows = false;
             this.dgv_shipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_shipments.Location = new System.Drawing.Point(17, 30);
             this.dgv_shipments.Name = "dgv_shipments";
+            this.dgv_shipments.ReadOnly = true;
             this.dgv_shipments.Size = new System.Drawing.Size(621, 532);
             this.dgv_shipments.TabIndex = 7;
             // 
