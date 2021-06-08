@@ -51,7 +51,7 @@ namespace GroupProject
             using (MySqlConnection mysqlcon = new MySqlConnection(connection))
             {
                 mysqlcon.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM Shipment WHERE sender = @user;", mysqlcon);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM Shipment WHERE sender = @user AND status = 'wait_bill';", mysqlcon);
                 cmd.Parameters.AddWithValue("@user", cusID);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = cmd;
