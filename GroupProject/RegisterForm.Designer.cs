@@ -74,7 +74,7 @@ namespace GroupProject
             this.btnCancel.Location = new System.Drawing.Point(257, 586);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(121, 42);
-            this.btnCancel.TabIndex = 36;
+            this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -85,7 +85,7 @@ namespace GroupProject
             this.btnSubmit.Location = new System.Drawing.Point(36, 586);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(132, 42);
-            this.btnSubmit.TabIndex = 34;
+            this.btnSubmit.TabIndex = 14;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btn_Submit_Click);
@@ -96,7 +96,7 @@ namespace GroupProject
             this.tbxAddress.Multiline = true;
             this.tbxAddress.Name = "tbxAddress";
             this.tbxAddress.Size = new System.Drawing.Size(262, 70);
-            this.tbxAddress.TabIndex = 33;
+            this.tbxAddress.TabIndex = 10;
             // 
             // tbxPhone
             // 
@@ -104,7 +104,7 @@ namespace GroupProject
             this.tbxPhone.MaxLength = 15;
             this.tbxPhone.Name = "tbxPhone";
             this.tbxPhone.Size = new System.Drawing.Size(172, 22);
-            this.tbxPhone.TabIndex = 32;
+            this.tbxPhone.TabIndex = 2;
             // 
             // tbxEmail
             // 
@@ -112,7 +112,7 @@ namespace GroupProject
             this.tbxEmail.MaxLength = 50;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(262, 22);
-            this.tbxEmail.TabIndex = 31;
+            this.tbxEmail.TabIndex = 6;
             // 
             // tbxPassword
             // 
@@ -121,7 +121,7 @@ namespace GroupProject
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(200, 22);
-            this.tbxPassword.TabIndex = 30;
+            this.tbxPassword.TabIndex = 4;
             this.tbxPassword.TextChanged += new System.EventHandler(this.CheckPassword);
             // 
             // tbxAccount
@@ -130,7 +130,7 @@ namespace GroupProject
             this.tbxAccount.MaxLength = 16;
             this.tbxAccount.Name = "tbxAccount";
             this.tbxAccount.Size = new System.Drawing.Size(200, 22);
-            this.tbxAccount.TabIndex = 29;
+            this.tbxAccount.TabIndex = 3;
             this.tbxAccount.TextChanged += new System.EventHandler(this.tbxAccount_TextChanged);
             // 
             // tbxName
@@ -139,7 +139,7 @@ namespace GroupProject
             this.tbxName.MaxLength = 50;
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(182, 22);
-            this.tbxName.TabIndex = 28;
+            this.tbxName.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -219,14 +219,14 @@ namespace GroupProject
             this.tbxFax.Location = new System.Drawing.Point(116, 357);
             this.tbxFax.Name = "tbxFax";
             this.tbxFax.Size = new System.Drawing.Size(262, 22);
-            this.tbxFax.TabIndex = 38;
+            this.tbxFax.TabIndex = 9;
             // 
             // tbxPhonePrefix
             // 
             this.tbxPhonePrefix.Location = new System.Drawing.Point(136, 101);
             this.tbxPhonePrefix.Name = "tbxPhonePrefix";
             this.tbxPhonePrefix.Size = new System.Drawing.Size(51, 22);
-            this.tbxPhonePrefix.TabIndex = 39;
+            this.tbxPhonePrefix.TabIndex = 1;
             // 
             // rbBussinessC
             // 
@@ -234,7 +234,7 @@ namespace GroupProject
             this.rbBussinessC.Location = new System.Drawing.Point(136, 321);
             this.rbBussinessC.Name = "rbBussinessC";
             this.rbBussinessC.Size = new System.Drawing.Size(69, 16);
-            this.rbBussinessC.TabIndex = 40;
+            this.rbBussinessC.TabIndex = 7;
             this.rbBussinessC.TabStop = true;
             this.rbBussinessC.Text = "Company";
             this.rbBussinessC.UseVisualStyleBackColor = true;
@@ -254,7 +254,7 @@ namespace GroupProject
             this.rbBussinessP.Location = new System.Drawing.Point(242, 321);
             this.rbBussinessP.Name = "rbBussinessP";
             this.rbBussinessP.Size = new System.Drawing.Size(62, 16);
-            this.rbBussinessP.TabIndex = 42;
+            this.rbBussinessP.TabIndex = 8;
             this.rbBussinessP.TabStop = true;
             this.rbBussinessP.Text = "Personal";
             this.rbBussinessP.UseVisualStyleBackColor = true;
@@ -265,7 +265,7 @@ namespace GroupProject
             this.checkBoxPolicy.Location = new System.Drawing.Point(36, 532);
             this.checkBoxPolicy.Name = "checkBoxPolicy";
             this.checkBoxPolicy.Size = new System.Drawing.Size(166, 16);
-            this.checkBoxPolicy.TabIndex = 43;
+            this.checkBoxPolicy.TabIndex = 12;
             this.checkBoxPolicy.Text = "I confirm the company policy.";
             this.checkBoxPolicy.UseVisualStyleBackColor = true;
             this.checkBoxPolicy.CheckedChanged += new System.EventHandler(this.checkBoxPolicy_CheckedChanged);
@@ -326,7 +326,7 @@ namespace GroupProject
             this.checkBoxEmailNotice.Location = new System.Drawing.Point(36, 564);
             this.checkBoxEmailNotice.Name = "checkBoxEmailNotice";
             this.checkBoxEmailNotice.Size = new System.Drawing.Size(328, 16);
-            this.checkBoxEmailNotice.TabIndex = 49;
+            this.checkBoxEmailNotice.TabIndex = 13;
             this.checkBoxEmailNotice.Text = "I want to receive the company email, advertise and policy update.";
             this.checkBoxEmailNotice.UseVisualStyleBackColor = true;
             // 
@@ -346,7 +346,7 @@ namespace GroupProject
             this.llblOldUser.Location = new System.Drawing.Point(304, 75);
             this.llblOldUser.Name = "llblOldUser";
             this.llblOldUser.Size = new System.Drawing.Size(103, 12);
-            this.llblOldUser.TabIndex = 51;
+            this.llblOldUser.TabIndex = 16;
             this.llblOldUser.TabStop = true;
             this.llblOldUser.Text = "Already a Customer?";
             this.llblOldUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOldUser_LinkClicked);
@@ -357,7 +357,7 @@ namespace GroupProject
             this.llblCheckAccountValid.Location = new System.Drawing.Point(323, 171);
             this.llblCheckAccountValid.Name = "llblCheckAccountValid";
             this.llblCheckAccountValid.Size = new System.Drawing.Size(84, 12);
-            this.llblCheckAccountValid.TabIndex = 52;
+            this.llblCheckAccountValid.TabIndex = 17;
             this.llblCheckAccountValid.TabStop = true;
             this.llblCheckAccountValid.Text = "Check validation";
             this.llblCheckAccountValid.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCheckAccountValid_LinkClicked);
@@ -388,7 +388,7 @@ namespace GroupProject
             this.tbxRePassword.Name = "tbxRePassword";
             this.tbxRePassword.PasswordChar = '*';
             this.tbxRePassword.Size = new System.Drawing.Size(200, 22);
-            this.tbxRePassword.TabIndex = 55;
+            this.tbxRePassword.TabIndex = 5;
             this.tbxRePassword.TextChanged += new System.EventHandler(this.CheckPassword);
             // 
             // checkBoxPassword
@@ -429,7 +429,7 @@ namespace GroupProject
             this.tbxPostCode.Location = new System.Drawing.Point(116, 487);
             this.tbxPostCode.Name = "tbxPostCode";
             this.tbxPostCode.Size = new System.Drawing.Size(262, 22);
-            this.tbxPostCode.TabIndex = 59;
+            this.tbxPostCode.TabIndex = 11;
             // 
             // RegisterForm
             // 
