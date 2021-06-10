@@ -30,7 +30,6 @@ namespace GroupProject
         private void InitializeComponent()
         {
             this.btnCancel = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.tbxPhone = new System.Windows.Forms.TextBox();
@@ -60,38 +59,32 @@ namespace GroupProject
             this.checkBoxEmailNotice = new System.Windows.Forms.CheckBox();
             this.lblnote5 = new System.Windows.Forms.Label();
             this.llblOldUser = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.llblCheckAccountValid = new System.Windows.Forms.LinkLabel();
             this.lblRePassword = new System.Windows.Forms.Label();
             this.lblnote6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxRePassword = new System.Windows.Forms.TextBox();
             this.checkBoxPassword = new System.Windows.Forms.CheckBox();
             this.lblnote7 = new System.Windows.Forms.Label();
+            this.lblPostCode = new System.Windows.Forms.Label();
+            this.tbxPostCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(278, 602);
+            this.btnCancel.Location = new System.Drawing.Point(257, 586);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 26);
+            this.btnCancel.Size = new System.Drawing.Size(121, 42);
             this.btnCancel.TabIndex = 36;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(154, 602);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 26);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.Enabled = false;
-            this.btnSubmit.Location = new System.Drawing.Point(30, 602);
+            this.btnSubmit.Location = new System.Drawing.Point(36, 586);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(100, 26);
+            this.btnSubmit.Size = new System.Drawing.Size(132, 42);
             this.btnSubmit.TabIndex = 34;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -129,6 +122,7 @@ namespace GroupProject
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(200, 22);
             this.tbxPassword.TabIndex = 30;
+            this.tbxPassword.TextChanged += new System.EventHandler(this.CheckPassword);
             // 
             // tbxAccount
             // 
@@ -137,13 +131,14 @@ namespace GroupProject
             this.tbxAccount.Name = "tbxAccount";
             this.tbxAccount.Size = new System.Drawing.Size(200, 22);
             this.tbxAccount.TabIndex = 29;
+            this.tbxAccount.TextChanged += new System.EventHandler(this.tbxAccount_TextChanged);
             // 
             // tbxName
             // 
             this.tbxName.Location = new System.Drawing.Point(116, 65);
             this.tbxName.MaxLength = 50;
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(200, 22);
+            this.tbxName.Size = new System.Drawing.Size(182, 22);
             this.tbxName.TabIndex = 28;
             // 
             // lblAddress
@@ -267,7 +262,7 @@ namespace GroupProject
             // checkBoxPolicy
             // 
             this.checkBoxPolicy.AutoSize = true;
-            this.checkBoxPolicy.Location = new System.Drawing.Point(37, 496);
+            this.checkBoxPolicy.Location = new System.Drawing.Point(36, 532);
             this.checkBoxPolicy.Name = "checkBoxPolicy";
             this.checkBoxPolicy.Size = new System.Drawing.Size(166, 16);
             this.checkBoxPolicy.TabIndex = 43;
@@ -328,7 +323,7 @@ namespace GroupProject
             // checkBoxEmailNotice
             // 
             this.checkBoxEmailNotice.AutoSize = true;
-            this.checkBoxEmailNotice.Location = new System.Drawing.Point(37, 536);
+            this.checkBoxEmailNotice.Location = new System.Drawing.Point(36, 564);
             this.checkBoxEmailNotice.Name = "checkBoxEmailNotice";
             this.checkBoxEmailNotice.Size = new System.Drawing.Size(328, 16);
             this.checkBoxEmailNotice.TabIndex = 49;
@@ -348,23 +343,24 @@ namespace GroupProject
             // llblOldUser
             // 
             this.llblOldUser.AutoSize = true;
-            this.llblOldUser.Location = new System.Drawing.Point(323, 75);
+            this.llblOldUser.Location = new System.Drawing.Point(304, 75);
             this.llblOldUser.Name = "llblOldUser";
-            this.llblOldUser.Size = new System.Drawing.Size(83, 12);
+            this.llblOldUser.Size = new System.Drawing.Size(103, 12);
             this.llblOldUser.TabIndex = 51;
             this.llblOldUser.TabStop = true;
-            this.llblOldUser.Text = "Check registered";
+            this.llblOldUser.Text = "Already a Customer?";
             this.llblOldUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOldUser_LinkClicked);
             // 
-            // linkLabel1
+            // llblCheckAccountValid
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(323, 171);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(84, 12);
-            this.linkLabel1.TabIndex = 52;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Check validation";
+            this.llblCheckAccountValid.AutoSize = true;
+            this.llblCheckAccountValid.Location = new System.Drawing.Point(323, 171);
+            this.llblCheckAccountValid.Name = "llblCheckAccountValid";
+            this.llblCheckAccountValid.Size = new System.Drawing.Size(84, 12);
+            this.llblCheckAccountValid.TabIndex = 52;
+            this.llblCheckAccountValid.TabStop = true;
+            this.llblCheckAccountValid.Text = "Check validation";
+            this.llblCheckAccountValid.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCheckAccountValid_LinkClicked);
             // 
             // lblRePassword
             // 
@@ -385,18 +381,21 @@ namespace GroupProject
             this.lblnote6.TabIndex = 54;
             this.lblnote6.Text = "*";
             // 
-            // textBox1
+            // tbxRePassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 239);
-            this.textBox1.MaxLength = 16;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 55;
+            this.tbxRePassword.Location = new System.Drawing.Point(116, 239);
+            this.tbxRePassword.MaxLength = 16;
+            this.tbxRePassword.Name = "tbxRePassword";
+            this.tbxRePassword.PasswordChar = '*';
+            this.tbxRePassword.Size = new System.Drawing.Size(200, 22);
+            this.tbxRePassword.TabIndex = 55;
+            this.tbxRePassword.TextChanged += new System.EventHandler(this.CheckPassword);
             // 
             // checkBoxPassword
             // 
             this.checkBoxPassword.AutoSize = true;
+            this.checkBoxPassword.Checked = true;
+            this.checkBoxPassword.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPassword.Enabled = false;
             this.checkBoxPassword.Location = new System.Drawing.Point(329, 241);
             this.checkBoxPassword.Name = "checkBoxPassword";
@@ -416,17 +415,35 @@ namespace GroupProject
             this.lblnote7.TabIndex = 57;
             this.lblnote7.Text = "*";
             // 
+            // lblPostCode
+            // 
+            this.lblPostCode.AutoSize = true;
+            this.lblPostCode.Location = new System.Drawing.Point(34, 490);
+            this.lblPostCode.Name = "lblPostCode";
+            this.lblPostCode.Size = new System.Drawing.Size(55, 12);
+            this.lblPostCode.TabIndex = 58;
+            this.lblPostCode.Text = "Post Code:";
+            // 
+            // tbxPostCode
+            // 
+            this.tbxPostCode.Location = new System.Drawing.Point(116, 487);
+            this.tbxPostCode.Name = "tbxPostCode";
+            this.tbxPostCode.Size = new System.Drawing.Size(262, 22);
+            this.tbxPostCode.TabIndex = 59;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(426, 683);
+            this.Controls.Add(this.tbxPostCode);
+            this.Controls.Add(this.lblPostCode);
             this.Controls.Add(this.lblnote7);
             this.Controls.Add(this.checkBoxPassword);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxRePassword);
             this.Controls.Add(this.lblnote6);
             this.Controls.Add(this.lblRePassword);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.llblCheckAccountValid);
             this.Controls.Add(this.llblOldUser);
             this.Controls.Add(this.lblnote5);
             this.Controls.Add(this.checkBoxEmailNotice);
@@ -443,7 +460,6 @@ namespace GroupProject
             this.Controls.Add(this.tbxFax);
             this.Controls.Add(this.lblFax);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tbxAddress);
             this.Controls.Add(this.tbxPhone);
@@ -469,7 +485,6 @@ namespace GroupProject
         #endregion
 
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.TextBox tbxAddress;
         private System.Windows.Forms.TextBox tbxPhone;
@@ -499,11 +514,13 @@ namespace GroupProject
         private System.Windows.Forms.CheckBox checkBoxEmailNotice;
         private System.Windows.Forms.Label lblnote5;
         private System.Windows.Forms.LinkLabel llblOldUser;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel llblCheckAccountValid;
         private System.Windows.Forms.Label lblRePassword;
         private System.Windows.Forms.Label lblnote6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxRePassword;
         private System.Windows.Forms.CheckBox checkBoxPassword;
         private System.Windows.Forms.Label lblnote7;
+        private System.Windows.Forms.Label lblPostCode;
+        private System.Windows.Forms.TextBox tbxPostCode;
     }
 }

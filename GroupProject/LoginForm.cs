@@ -54,9 +54,15 @@ namespace GroupProject
             string user = tbx_AccountName.Text;
             string pass = tbx_Password.Text;
 
-            if (IsLogin(user, pass))
+            // Missing Account Name
+            if (tbx_AccountName.Text.Trim().Equals(""))
+                MessageBox.Show("Please Enter Account Name", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            // Missing Password
+            else if (tbx_Password.Text.Trim().Equals(""))
+                MessageBox.Show("Please Enter Password", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            // Login Success
+            else if (IsLogin(user, pass))
             {
-                // Login Success
                 MessageBox.Show("Login Success");
                 UserSuccessfullyAuthenticated = true;
                 string cmd = "SELECT * FROM edeaccount WHERE loginAccountName = @name;";
@@ -67,7 +73,8 @@ namespace GroupProject
                 this.Hide();
 
             }
-            else // Login Fail
+            // Login Fail
+            else 
             {
                 // Count Down From 3 to 0
                 if (--secureLoginTime == 0)
@@ -75,7 +82,6 @@ namespace GroupProject
                     // Security 30 seconds Lock
                     MessageBox.Show("Login Failure, Please wait 30 seconds", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     tbx_AccountName.Enabled = false;
-                    tbx_AccountName.Text = "";
                     tbx_Password.Enabled = false;
                     tbx_Password.Text = "";
                     btn_Login.Enabled = false;
@@ -88,6 +94,7 @@ namespace GroupProject
                 else
                 {
                     MessageBox.Show("Login Failure, you can try " + secureLoginTime + " more times", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    tbx_Password.Text = "";
                 }
             }
         }
