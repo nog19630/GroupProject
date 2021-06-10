@@ -33,7 +33,18 @@ namespace GroupProject
         {
 
         }
-
+        private bool IsStaffLogin(string user, string pass) {
+            string query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND staffPassword = '{pass}';";
+            try
+            {
+                return DatabaseConnector.matchQuery(query);
+            }
+            catch (Exception ex) {
+                DatabaseConnector.closeDatabase();
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
         private bool IsLogin(string user, string pass)
         {
             string query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
@@ -137,6 +148,58 @@ namespace GroupProject
             DatabaseConnector.closeDatabase();
             mainfrm.Show();
             this.Hide();
+        }
+
+        private void btn_staff_Click(object sender, EventArgs e)
+        {
+            string user = tbx_AccountName.Text;
+            string pass = tbx_Password.Text;
+
+            if (IsStaffLogin(user, pass))
+            {
+                // Login Success
+                UserSuccessfullyAuthenticated = true;
+                string cmd = "SELECT position FROM staff WHERE staffID = @name;";
+                string pos = DatabaseConnector.getStaffPos(user, cmd);
+                DatabaseConnector.closeDatabase();
+
+                if (pos == "IT Officer")
+                {
+                    MessageBox.Show("Login Success");
+                    DataMaintenance mainfrm = new DataMaintenance();
+                    mainfrm.Show();
+                    this.Hide();
+                }
+                else
+                { //Add any other positions here according to the case study
+                    MessageBox.Show("The staff credentials entered is not permitted to use any of the system's functions.");
+                }
+
+
+
+            }
+            else {
+                if (--secureLoginTime == 0)
+                {
+                    // Security 30 seconds Lock
+                    MessageBox.Show("Login Failure, Please wait 30 seconds", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    tbx_AccountName.Enabled = false;
+                    tbx_AccountName.Text = "";
+                    tbx_Password.Enabled = false;
+                    tbx_Password.Text = "";
+                    btn_Login.Enabled = false;
+                    btn_Login.Text = "30s";
+                    secureLoginTime = 30;
+
+                    timer.Start();
+                    timer.Elapsed += Count30;
+                }
+                else
+                {
+                    MessageBox.Show("Login Failure, you can try " + secureLoginTime + " more times", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                }
+            }
+
         }
     }
 }
