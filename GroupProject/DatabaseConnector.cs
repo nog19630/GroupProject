@@ -142,6 +142,20 @@ namespace GroupProject
             }
                 
         }
+
+        public static string getStaffPos(string user, string sql)
+        {
+            connectDatabase();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@name", user);
+            cmd.CommandType = CommandType.Text;
+            using (MySqlDataReader dr = cmd.ExecuteReader())
+            {
+                dr.Read();
+                return dr["position"].ToString();
+            }
+
+        }
     }
 
     
