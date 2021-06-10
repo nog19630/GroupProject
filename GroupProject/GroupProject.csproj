@@ -127,6 +127,12 @@
       <DependentUpon>BookPickupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnector.cs" />
+    <Compile Include="DataMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataMaintenance.Designer.cs">
+      <DependentUpon>DataMaintenance.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookPickupForm.resx">
       <DependentUpon>BookPickupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataMaintenance.resx">
+      <DependentUpon>DataMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
