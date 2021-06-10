@@ -234,6 +234,8 @@ namespace GroupProject
         private void CheckPassword(object sender, EventArgs e)
         {
             checkBoxPassword.Visible = tbxPassword.Text.Equals(tbxRePassword.Text) && !tbxPassword.Text.Equals("") && !tbxRePassword.Text.Equals("");
+            checkBoxPassword.Text = checkBoxPassword.Text.Length >= 8 ? "Valid!" : "8~16 alphanumeric letters";
+            checkBoxPassword.Checked = checkBoxPassword.Text.Length >= 8;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
