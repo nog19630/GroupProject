@@ -14,8 +14,9 @@ namespace GroupProject
 {
     public partial class LoginForm : Form
     {
-        public static bool UserSuccessfullyAuthenticated = false;
-
+        public static string userId;
+        public static string loginAccount;
+        public static string customerId;
 
         public LoginForm()
         {
@@ -27,9 +28,16 @@ namespace GroupProject
 
         }
 
-        private bool IsLogin(string user, string pass)
+        private bool IsLogin(string user, string pass, char userType) 
         {
-            string query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
+            string query = "";
+            if (userType == 'u') { 
+                query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
+            }
+            else if (userType == 'a')
+            {
+                query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND staffPassword = '{pass}';";
+            }
             try
             {
                 return DatabaseConnector.matchQuery(query);
@@ -46,13 +54,37 @@ namespace GroupProject
         {
             string user = tbx_AccountName.Text;
             string pass = tbx_Password.Text;
+            userId = "";
 
-            if (IsLogin(user, pass))
+            if (IsLogin(user, pass, 'u'))
             {
+                string sql = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}';";
+                DataRow drEdeId = DatabaseConnector.getDataRow(sql);
+                userId = drEdeId["edeID"].ToString();
+                loginAccount = user;
+                customerId = drEdeId["customerID"].ToString();
                 MessageBox.Show("Login Success");
-                UserSuccessfullyAuthenticated = true;
-                this.Close();
+                MainMenuForm.userType = 'u';
+                MainMenuForm mainMenuForm = new MainMenuForm();
+                this.Hide();
+                mainMenuForm.ShowDialog();
+                this.Controls.Clear();
+                this.InitializeComponent();
+                this.Show();
 
+            }
+            else if (IsLogin(user, pass, 'a'))
+            {
+                userId = user;
+                loginAccount = user;
+                MessageBox.Show("Login Success");
+                MainMenuForm.userType = 'a';
+                MainMenuForm mainMenuForm = new MainMenuForm();
+                this.Hide();
+                mainMenuForm.ShowDialog();
+                this.Controls.Clear();
+                this.InitializeComponent();
+                this.Show();
             }
             else
             {
@@ -65,8 +97,12 @@ namespace GroupProject
             RegisterForm registerForm = new RegisterForm();
             this.Hide();
             registerForm.ShowDialog();
+            this.Show();
+        }
 
-
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

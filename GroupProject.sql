@@ -45,7 +45,7 @@ CREATE TABLE `edeaccount` (
   CONSTRAINT `pk_edeaccount_customerID` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `frieght` (
+CREATE TABLE `freight` (
   `itemID` char(15) NOT NULL,
   `weight` float NOT NULL,
   `length` float NOT NULL,

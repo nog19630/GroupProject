@@ -64,29 +64,67 @@ namespace GroupProject
         public static DataSet getDataSet()
         {
             connectDatabase();
-            DataSet tempDs = ds;
+            DataSet tempDs = ds.Clone();
             closeDatabase();
             return tempDs;
         }
 
-        public static MySqlConnection getConnetion()
+        public static DataSet getDataSet(string query, string tableName)
         {
-            return connection;
+            try
+            {
+                if (connectDatabase())
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                    ds.Reset();
+                    adapter.Fill(ds, tableName);
+                    adapter.Dispose();
+                    DataSet tempDs = ds.Copy();
+                    return tempDs;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                closeDatabase();
+            }
+        }
+
+        public static DataRow getDataRow(string query)
+        {
+            DataSet ds = getDataSet(query, "table");
+            return ds.Tables["table"].Rows[0];
         }
 
         public static bool executeQuery(string query)
         {
             try
             {
-                connectDatabase();
-                command = new MySqlCommand(query, connection);
-                if (command.ExecuteNonQuery() == 1)
+                if (connectDatabase())
                 {
-                    return true;
-                } 
-                else {
+                    command = new MySqlCommand(query, connection);
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                } else
+                {
                     return false;
                 }
+                
             } 
             catch (Exception ex)
             {
@@ -104,20 +142,28 @@ namespace GroupProject
         {
             try
             {
-                connectDatabase();
-                command = new MySqlCommand(query, connection);
-                MySqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                if (connectDatabase())
                 {
-                    reader.Close();
-                    return true;
-                }
+                    command = new MySqlCommand(query, connection);
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        reader.Close();
+                        return true;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return false;
+                    }
+                } 
                 else
                 {
-                    reader.Close();
                     return false;
                 }
+                
+                
             }
             catch (Exception ex)
             {

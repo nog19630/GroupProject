@@ -57,6 +57,7 @@ namespace GroupProject
             this.btn_Exit.TabIndex = 14;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Login
             // 
@@ -84,6 +85,7 @@ namespace GroupProject
             this.tbx_Password.Name = "tbx_Password";
             this.tbx_Password.Size = new System.Drawing.Size(262, 22);
             this.tbx_Password.TabIndex = 11;
+            this.tbx_Password.UseSystemPasswordChar = true;
             // 
             // tbx_AccountName
             // 
@@ -112,6 +114,7 @@ namespace GroupProject
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 250);
@@ -124,6 +127,7 @@ namespace GroupProject
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_AccountName);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
