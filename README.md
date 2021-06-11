@@ -21,5 +21,3 @@ This is ITP4915M End of Module Assignment for Group 11.
 
 ### Visual Studio Nuget Packages ###
 1. Mysql.Data 8.0.25
-2. Mysql.Data.EntityFramework 8.0.25
-3. EntityFramework 6.4.4

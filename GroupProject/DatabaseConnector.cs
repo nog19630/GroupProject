@@ -15,17 +15,18 @@ namespace GroupProject
         private static string dataSource = "localhost";
         private static string port = "3306";
         private static string userID = "root";
+        private static string database = "ede";
         private static string password = "root";
         private static MySqlConnection connection = new MySqlConnection();
         private static DataSet ds = new DataSet();
-        private static string[] DBtable = { "customer", "documentfreight", "edeaccount", "frieght", "invoice", "operationcenter", "paymentgateway", "pickuporder", "shipment", "staff", "vehicle" };
+        private static string[] DBtable = { "customer", "documentfreight", "edeaccount", "freight", "invoice", "operationcenter", "paymentgateway", "pickuporder", "shipment", "staff", "vehicle" };
         private static MySqlCommand command;
 
         public static bool connectDatabase()
         {
             try
             {
-                string constructorString = String.Format("Data Source={0};Port={1};User Id={2};Password={3}", dataSource, port, userID, password);
+                string constructorString = String.Format("Data Source={0};Port={1};User Id={2};database ={3};Password={4}", dataSource, port, userID, database,password);
                 connection = new MySqlConnection(constructorString);
                 connection.Open();
                 if (connection.State == ConnectionState.Open)
@@ -174,6 +175,32 @@ namespace GroupProject
             {
                 closeDatabase();
             }
+        }
+
+        public static string getUserID(string user, string sql) {
+            connectDatabase();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@name", user);
+            cmd.CommandType = CommandType.Text;
+            using (MySqlDataReader dr = cmd.ExecuteReader()) {
+                dr.Read();
+                return dr["customerID"].ToString();
+            }
+                
+        }
+
+        public static string getStaffPos(string user, string sql)
+        {
+            connectDatabase();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@name", user);
+            cmd.CommandType = CommandType.Text;
+            using (MySqlDataReader dr = cmd.ExecuteReader())
+            {
+                dr.Read();
+                return dr["position"].ToString();
+            }
+
         }
     }
 
