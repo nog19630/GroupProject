@@ -37,7 +37,7 @@ namespace GroupProject
         {
             lvw_MessageList.Items.Clear();
             rtx_MessageContent.Text = "";
-            string sql = $"SELECT * FROM ede.message WHERE receiver = '{edeID}' AND status != 'Delete' ORDER BY sendTime DESC;";
+            string sql = $"SELECT * FROM ede.message WHERE receiver = '{edeID}' AND status != 'Delete' ORDER BY sendTime ASC;";
             DataSet dsMessage = DatabaseConnector.getDataSet(sql, "message");
 
             if (dsMessage.Tables["message"].Rows.Count > 0)

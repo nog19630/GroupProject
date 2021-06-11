@@ -19,7 +19,7 @@ namespace GroupProject
         private static string password = "root";
         private static MySqlConnection connection = new MySqlConnection();
         private static DataSet ds = new DataSet();
-        private static string[] DBtable = { "customer", "documentfreight", "edeaccount", "freight", "invoice", "operationcenter", "paymentgateway", "pickuporder", "shipment", "staff", "vehicle" };
+        private static string[] DBtable = { "customer", "documentfreight", "edeaccount", "frieght", "invoice", "operationcenter", "paymentgateway", "pickuporder", "shipment", "staff", "vehicle" };
         private static MySqlCommand command;
 
         public static bool connectDatabase()

@@ -139,6 +139,7 @@ namespace GroupProject
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UpdateMessageStatusForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Message Status";
             this.Load += new System.EventHandler(this.UpdateMessageStatusForm_Load);
             this.ResumeLayout(false);
