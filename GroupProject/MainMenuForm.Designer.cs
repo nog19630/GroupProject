@@ -237,6 +237,7 @@
             // 
             // dgv_shipments
             // 
+            this.dgv_shipments.AllowUserToAddRows = false;
             this.dgv_shipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_shipments.Location = new System.Drawing.Point(6, 6);
             this.dgv_shipments.Name = "dgv_shipments";
