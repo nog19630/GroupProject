@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace GroupProject
 {
     public partial class MainMenuForm : Form
     {
         public static char userType;
         private static bool logout = false;
-
         public MainMenuForm()
         {
+           
             InitializeComponent();
             //var x;
         }
@@ -27,6 +28,10 @@ namespace GroupProject
             {
                 lbl_UserType.Text += "User";
                 lbl_CustomerID.Text += LoginForm.customerId;
+
+                //Load 
+                toolStripStatusLabel1.Text = "Time: " + DateTime.Now.ToString("h:mm:ss tt");
+                DatabaseConnector.GridFill(dgv_shipments);
 
                 // book pickup form
                 BookPickupForm bookPickupForm = new BookPickupForm();
@@ -131,6 +136,12 @@ namespace GroupProject
                 Application.Exit();
             }
 
+        }
+
+        private void btn_fillbill_Click(object sender, EventArgs e)
+        {
+            AirwayBillForm airwayfrm = new AirwayBillForm(LoginForm.customerId);
+            airwayfrm.Show();
         }
     }
 }
