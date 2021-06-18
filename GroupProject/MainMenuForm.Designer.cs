@@ -36,6 +36,10 @@
             this.tbp_MessageBox = new System.Windows.Forms.TabPage();
             this.tbp_EditPickupOrder = new System.Windows.Forms.TabPage();
             this.tbp_ManageMessage = new System.Windows.Forms.TabPage();
+            this.tbp_submitbill = new System.Windows.Forms.TabPage();
+            this.btn_fillbill = new System.Windows.Forms.Button();
+            this.dgv_shipments = new System.Windows.Forms.DataGridView();
+            this.tbp_payservice = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,16 +50,26 @@
             this.btn_Logout = new System.Windows.Forms.Button();
             this.lbl_AccountID = new System.Windows.Forms.Label();
             this.lbl_CustomerID = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgv_shipments = new System.Windows.Forms.DataGridView();
-            this.btn_fillbill = new System.Windows.Forms.Button();
+            this.checkbPayServiceSafeCreditInfo = new System.Windows.Forms.CheckBox();
+            this.llblLastCreditCard = new System.Windows.Forms.LinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbxPayServiceSecureCode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbxPayServiceCardNo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnPayServiceCal = new System.Windows.Forms.Button();
+            this.lblPayServiceTotal = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.clbPayment = new System.Windows.Forms.CheckedListBox();
+            this.btnPayServicePay = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbc_Function.SuspendLayout();
+            this.tbp_submitbill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).BeginInit();
+            this.tbp_payservice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -74,8 +88,8 @@
             this.tbc_Function.Controls.Add(this.tbp_MessageBox);
             this.tbc_Function.Controls.Add(this.tbp_EditPickupOrder);
             this.tbc_Function.Controls.Add(this.tbp_ManageMessage);
-            this.tbc_Function.Controls.Add(this.tabPage1);
-            this.tbc_Function.Controls.Add(this.tabPage2);
+            this.tbc_Function.Controls.Add(this.tbp_submitbill);
+            this.tbc_Function.Controls.Add(this.tbp_payservice);
             this.tbc_Function.Location = new System.Drawing.Point(4, 69);
             this.tbc_Function.Name = "tbc_Function";
             this.tbc_Function.SelectedIndex = 0;
@@ -128,6 +142,59 @@
             this.tbp_ManageMessage.TabIndex = 4;
             this.tbp_ManageMessage.Text = "Manage Message";
             this.tbp_ManageMessage.UseVisualStyleBackColor = true;
+            // 
+            // tbp_submitbill
+            // 
+            this.tbp_submitbill.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tbp_submitbill.Controls.Add(this.btn_fillbill);
+            this.tbp_submitbill.Controls.Add(this.dgv_shipments);
+            this.tbp_submitbill.Location = new System.Drawing.Point(4, 22);
+            this.tbp_submitbill.Name = "tbp_submitbill";
+            this.tbp_submitbill.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_submitbill.Size = new System.Drawing.Size(787, 477);
+            this.tbp_submitbill.TabIndex = 5;
+            this.tbp_submitbill.Text = "Submit Airway bill";
+            // 
+            // btn_fillbill
+            // 
+            this.btn_fillbill.Location = new System.Drawing.Point(523, 129);
+            this.btn_fillbill.Name = "btn_fillbill";
+            this.btn_fillbill.Size = new System.Drawing.Size(258, 233);
+            this.btn_fillbill.TabIndex = 1;
+            this.btn_fillbill.Text = "Submit Airway bill";
+            this.btn_fillbill.UseVisualStyleBackColor = true;
+            this.btn_fillbill.Click += new System.EventHandler(this.btn_fillbill_Click);
+            // 
+            // dgv_shipments
+            // 
+            this.dgv_shipments.AllowUserToAddRows = false;
+            this.dgv_shipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_shipments.Location = new System.Drawing.Point(6, 6);
+            this.dgv_shipments.Name = "dgv_shipments";
+            this.dgv_shipments.Size = new System.Drawing.Size(511, 465);
+            this.dgv_shipments.TabIndex = 0;
+            // 
+            // tbp_payservice
+            // 
+            this.tbp_payservice.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tbp_payservice.Controls.Add(this.btnPayServicePay);
+            this.tbp_payservice.Controls.Add(this.btnPayServiceCal);
+            this.tbp_payservice.Controls.Add(this.lblPayServiceTotal);
+            this.tbp_payservice.Controls.Add(this.label3);
+            this.tbp_payservice.Controls.Add(this.clbPayment);
+            this.tbp_payservice.Controls.Add(this.checkbPayServiceSafeCreditInfo);
+            this.tbp_payservice.Controls.Add(this.llblLastCreditCard);
+            this.tbp_payservice.Controls.Add(this.label6);
+            this.tbp_payservice.Controls.Add(this.tbxPayServiceSecureCode);
+            this.tbp_payservice.Controls.Add(this.label5);
+            this.tbp_payservice.Controls.Add(this.tbxPayServiceCardNo);
+            this.tbp_payservice.Controls.Add(this.label4);
+            this.tbp_payservice.Location = new System.Drawing.Point(4, 22);
+            this.tbp_payservice.Name = "tbp_payservice";
+            this.tbp_payservice.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_payservice.Size = new System.Drawing.Size(787, 477);
+            this.tbp_payservice.TabIndex = 6;
+            this.tbp_payservice.Text = "Pay Delivery Service";
             // 
             // splitContainer1
             // 
@@ -213,46 +280,127 @@
             this.lbl_CustomerID.TabIndex = 21;
             this.lbl_CustomerID.Text = "Customer ID: ";
             // 
-            // tabPage1
+            // checkbPayServiceSafeCreditInfo
             // 
-            this.tabPage1.Controls.Add(this.btn_fillbill);
-            this.tabPage1.Controls.Add(this.dgv_shipments);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(787, 477);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.checkbPayServiceSafeCreditInfo.AutoSize = true;
+            this.checkbPayServiceSafeCreditInfo.ForeColor = System.Drawing.Color.Brown;
+            this.checkbPayServiceSafeCreditInfo.Location = new System.Drawing.Point(26, 161);
+            this.checkbPayServiceSafeCreditInfo.Name = "checkbPayServiceSafeCreditInfo";
+            this.checkbPayServiceSafeCreditInfo.Size = new System.Drawing.Size(206, 17);
+            this.checkbPayServiceSafeCreditInfo.TabIndex = 18;
+            this.checkbPayServiceSafeCreditInfo.Text = "Save credit card number for next use?";
+            this.checkbPayServiceSafeCreditInfo.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // llblLastCreditCard
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(787, 477);
-            this.tabPage2.TabIndex = 6;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.llblLastCreditCard.AutoSize = true;
+            this.llblLastCreditCard.Location = new System.Drawing.Point(366, 64);
+            this.llblLastCreditCard.Name = "llblLastCreditCard";
+            this.llblLastCreditCard.Size = new System.Drawing.Size(122, 13);
+            this.llblLastCreditCard.TabIndex = 17;
+            this.llblLastCreditCard.TabStop = true;
+            this.llblLastCreditCard.Text = "Use previous credit card";
+            this.llblLastCreditCard.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblLastCreditCard_LinkClicked_1);
             // 
-            // dgv_shipments
+            // label6
             // 
-            this.dgv_shipments.AllowUserToAddRows = false;
-            this.dgv_shipments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_shipments.Location = new System.Drawing.Point(6, 6);
-            this.dgv_shipments.Name = "dgv_shipments";
-            this.dgv_shipments.Size = new System.Drawing.Size(511, 465);
-            this.dgv_shipments.TabIndex = 0;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Security Code:";
             // 
-            // btn_fillbill
+            // tbxPayServiceSecureCode
             // 
-            this.btn_fillbill.Location = new System.Drawing.Point(523, 129);
-            this.btn_fillbill.Name = "btn_fillbill";
-            this.btn_fillbill.Size = new System.Drawing.Size(258, 233);
-            this.btn_fillbill.TabIndex = 1;
-            this.btn_fillbill.Text = "Submit Airway bill";
-            this.btn_fillbill.UseVisualStyleBackColor = true;
-            this.btn_fillbill.Click += new System.EventHandler(this.btn_fillbill_Click);
+            this.tbxPayServiceSecureCode.Location = new System.Drawing.Point(126, 108);
+            this.tbxPayServiceSecureCode.MaxLength = 3;
+            this.tbxPayServiceSecureCode.Name = "tbxPayServiceSecureCode";
+            this.tbxPayServiceSecureCode.Size = new System.Drawing.Size(67, 20);
+            this.tbxPayServiceSecureCode.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Credit Card No.";
+            // 
+            // tbxPayServiceCardNo
+            // 
+            this.tbxPayServiceCardNo.Location = new System.Drawing.Point(126, 53);
+            this.tbxPayServiceCardNo.MaxLength = 16;
+            this.tbxPayServiceCardNo.Name = "tbxPayServiceCardNo";
+            this.tbxPayServiceCardNo.Size = new System.Drawing.Size(225, 20);
+            this.tbxPayServiceCardNo.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.label4.Location = new System.Drawing.Point(85, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(229, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Please Enter Credit Card Information:";
+            // 
+            // btnPayServiceCal
+            // 
+            this.btnPayServiceCal.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayServiceCal.Location = new System.Drawing.Point(479, 372);
+            this.btnPayServiceCal.Name = "btnPayServiceCal";
+            this.btnPayServiceCal.Size = new System.Drawing.Size(103, 41);
+            this.btnPayServiceCal.TabIndex = 22;
+            this.btnPayServiceCal.Text = "Calculate";
+            this.btnPayServiceCal.UseVisualStyleBackColor = true;
+            // 
+            // lblPayServiceTotal
+            // 
+            this.lblPayServiceTotal.AutoSize = true;
+            this.lblPayServiceTotal.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayServiceTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblPayServiceTotal.Location = new System.Drawing.Point(607, 374);
+            this.lblPayServiceTotal.Name = "lblPayServiceTotal";
+            this.lblPayServiceTotal.Size = new System.Drawing.Size(135, 27);
+            this.lblPayServiceTotal.TabIndex = 21;
+            this.lblPayServiceTotal.Text = "Total: $0.00";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(475, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(206, 20);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Please Select Payment(s) to Pay";
+            // 
+            // clbPayment
+            // 
+            this.clbPayment.FormattingEnabled = true;
+            this.clbPayment.Location = new System.Drawing.Point(393, 111);
+            this.clbPayment.Name = "clbPayment";
+            this.clbPayment.Size = new System.Drawing.Size(375, 229);
+            this.clbPayment.TabIndex = 19;
+            // 
+            // btnPayServicePay
+            // 
+            this.btnPayServicePay.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.btnPayServicePay.Location = new System.Drawing.Point(37, 230);
+            this.btnPayServicePay.Name = "btnPayServicePay";
+            this.btnPayServicePay.Size = new System.Drawing.Size(277, 143);
+            this.btnPayServicePay.TabIndex = 23;
+            this.btnPayServicePay.Text = "PAY";
+            this.btnPayServicePay.UseVisualStyleBackColor = true;
+            this.btnPayServicePay.Click += new System.EventHandler(this.btnPayServicePay_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainMenuForm
             // 
@@ -275,12 +423,14 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tbc_Function.ResumeLayout(false);
+            this.tbp_submitbill.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).EndInit();
+            this.tbp_payservice.ResumeLayout(false);
+            this.tbp_payservice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_shipments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,10 +455,23 @@
         private System.Windows.Forms.Label lbl_CustomerID;
         private System.Windows.Forms.TabPage tbp_MessageBox;
         private System.Windows.Forms.TabPage tbp_ManageMessage;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tbp_submitbill;
+        private System.Windows.Forms.TabPage tbp_payservice;
         private System.Windows.Forms.Button btn_fillbill;
         private System.Windows.Forms.DataGridView dgv_shipments;
+        private System.Windows.Forms.Button btnPayServicePay;
+        private System.Windows.Forms.Button btnPayServiceCal;
+        private System.Windows.Forms.Label lblPayServiceTotal;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckedListBox clbPayment;
+        private System.Windows.Forms.CheckBox checkbPayServiceSafeCreditInfo;
+        private System.Windows.Forms.LinkLabel llblLastCreditCard;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbxPayServiceSecureCode;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbxPayServiceCardNo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

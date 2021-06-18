@@ -61,6 +61,10 @@ namespace GroupProject
                 connection.Close();
             }
         }
+        public static MySqlConnection getConnetion()
+        {
+            return connection;
+        }
 
         public static DataSet getDataSet()
         {
