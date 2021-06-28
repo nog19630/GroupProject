@@ -23,7 +23,7 @@ namespace GroupProject
 
         private void AirwayBillForm_Load(object sender, EventArgs e)
         {
-            DatabaseConnector.GridFill(dgv_pack);
+            DatabaseConnector.GridFill(dgv_pack, "SELECT * FROM Shipment WHERE sender = @user AND status = 'wait_bill';");
         }
 
         private void button3_Click(object sender, EventArgs e)

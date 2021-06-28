@@ -206,11 +206,11 @@ namespace GroupProject
             }
 
         }
-        public static void GridFill(DataGridView control) //Filling datagridview with package to be filled with bill
+        public static void GridFill(DataGridView control,string sql) //Filling datagridview with package to be filled with bill
         {
 
             connectDatabase();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Shipment WHERE sender = @user AND status = 'wait_bill';", connection);
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("@user", LoginForm.customerId);
             MySqlDataAdapter da = new MySqlDataAdapter();
             da.SelectCommand = cmd;

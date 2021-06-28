@@ -14,6 +14,8 @@ namespace GroupProject
 {
     public partial class MainMenuForm : Form
     {
+        MySqlDataAdapter da;
+        DataTable dt;
         public static char userType;
         private static bool logout = false;
         float[] charge;
@@ -35,7 +37,7 @@ namespace GroupProject
 
                 //Load 
                 toolStripStatusLabel1.Text = "Time: " + DateTime.Now.ToString("h:mm:ss tt");
-                DatabaseConnector.GridFill(dgv_shipments);
+                DatabaseConnector.GridFill(dgv_shipments, "SELECT * FROM Shipment WHERE sender = @user AND status = 'wait_bill';");
 
                 //Airway bill submit
                 tbp_submitbill.Show();
@@ -66,9 +68,11 @@ namespace GroupProject
                 // dispose
                 tbp_EditPickupOrder.Dispose();
                 tbp_ManageMessage.Dispose();
+                tbp_datamain.Dispose();
             } 
             else if (userType == 'a')
             {
+
                 lbl_UserType.Text += "Admin";
                 lbl_CustomerID.Visible = false;
 
@@ -255,6 +259,54 @@ namespace GroupProject
             }
             reader.Close();
             DatabaseConnector.closeDatabase();
+        }
+
+        private void cbo_table_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+                try
+                {
+                
+                    DatabaseConnector.connectDatabase();
+                    string sql = "SELECT * FROM " + cbo_table.Text + ";";
+                    MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
+                    dt = new DataTable();
+                    cmd.CommandText = String.Format(sql);
+                    da = new MySqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    cmd.ExecuteNonQuery();
+                    da.Fill(dt);
+                    dgv_maintenance.DataSource = dt;
+                    MySqlCommandBuilder cbuilder = new MySqlCommandBuilder(da);
+
+            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    DatabaseConnector.closeDatabase();
+                }
+
+
+            
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            try {
+                dgv_maintenance.EndEdit();
+                da.Update(dt);
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                DatabaseConnector.closeDatabase();
+            }
+
         }
     }
 }
