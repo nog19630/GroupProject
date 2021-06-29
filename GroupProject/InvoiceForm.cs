@@ -23,8 +23,7 @@ namespace GroupProject
 
         private void InvoiceForm_Load(object sender, EventArgs e)
         {
-            try
-            {
+            
                 DatabaseConnector.connectDatabase();
                 MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
                 MySqlDataReader reader;
@@ -35,10 +34,16 @@ namespace GroupProject
                 reader.Read();
                 String senderID = reader.GetString("sender"), receiverID = reader.GetString("receiver");
                 lblTotal.Text = "Total Invoice Value: " + reader.GetFloat("totalDeliveryCost").ToString("0.00");
+            try
+            {
                 tbxDescription.Text = reader.GetString("detail");
+            } catch (Exception exception)
+            {
+                tbxDescription.Text = "No Description";
+            }
                 tbxInvoiceID.Text = invoiceID.ToString();
                 reader.Close();
-
+            
                 cmd.CommandText = String.Format("SELECT customerName, customerAddress, customerPhone, customerFax " +
                                                 "FROM ede.customer " +
                                                 "WHERE customerID='{0}'", senderID);
@@ -60,12 +65,19 @@ namespace GroupProject
                 tbxPostCode.Text = reader.GetString("customerPostCode");
                 reader.Close();
 
+            cmd.CommandText = String.Format("SELECT weight, quantity FROM ede.invoice, ede.shipment, ede.documentfreight, ede.freight WHERE invoice.invoiceID = shipment.invoiceID AND shipment.shipmentNo = documentfreight.shipmentNo AND invoice.invoiceID = {0} AND freight.itemID = documentfreight.itemID; ", invoiceID);
+            reader = cmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+                MessageBox.Show("no row");
+            tbxPieces.Text = reader.GetInt32("quantity").ToString();
+            tbxWeight.Text = reader.GetFloat("weight").ToString();
+
+
+                reader.Close();
+             
                 DatabaseConnector.closeDatabase();
-            } catch (Exception expection)
-            {
-                MessageBox.Show("Something wrong with this invoice, Please contact our staff for help.");
-                this.Close();
-            }
+            
 
         }
     }
