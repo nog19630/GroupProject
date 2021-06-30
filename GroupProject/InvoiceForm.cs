@@ -23,10 +23,11 @@ namespace GroupProject
 
         private void InvoiceForm_Load(object sender, EventArgs e)
         {
-            
-                DatabaseConnector.connectDatabase();
-                MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
-                MySqlDataReader reader;
+            DatabaseConnector.connectDatabase();
+            MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
+            MySqlDataReader reader;
+            try
+            {                
                 cmd.CommandText = String.Format("SELECT sender, receiver, totalDeliveryCost, detail " +
                                                 "FROM ede.invoice, ede.shipment " +
                                                 "WHERE invoice.invoiceID = shipment.invoiceID AND invoice.invoiceID = {0};", invoiceID);
@@ -34,16 +35,17 @@ namespace GroupProject
                 reader.Read();
                 String senderID = reader.GetString("sender"), receiverID = reader.GetString("receiver");
                 lblTotal.Text = "Total Invoice Value: " + reader.GetFloat("totalDeliveryCost").ToString("0.00");
-            try
-            {
-                tbxDescription.Text = reader.GetString("detail");
-            } catch (Exception exception)
-            {
-                tbxDescription.Text = "No Description";
-            }
+                try
+                {
+                    tbxDescription.Text = reader.GetString("detail");
+                }
+                catch (Exception exception)
+                {
+                    tbxDescription.Text = "No Description";
+                }
                 tbxInvoiceID.Text = invoiceID.ToString();
                 reader.Close();
-            
+
                 cmd.CommandText = String.Format("SELECT customerName, customerAddress, customerPhone, customerFax " +
                                                 "FROM ede.customer " +
                                                 "WHERE customerID='{0}'", senderID);
@@ -51,7 +53,7 @@ namespace GroupProject
                 reader.Read();
                 tbxSender.Text = reader.GetString("customerName");
                 tbxSenderAddress.Text = reader.GetString("customerAddress");
-                tbxSenderPhone.Text = reader.GetString("customerPhone") + (reader.IsDBNull(3)? "" : " / " + reader.GetString("customerFax"));
+                tbxSenderPhone.Text = reader.GetString("customerPhone") + (reader.IsDBNull(3) ? "" : " / " + reader.GetString("customerFax"));
                 reader.Close();
 
                 cmd.CommandText = String.Format("SELECT customerName, customerAddress, customerPhone, customerFax, customerPostCode " +
@@ -65,20 +67,22 @@ namespace GroupProject
                 tbxPostCode.Text = reader.GetString("customerPostCode");
                 reader.Close();
 
-            cmd.CommandText = String.Format("SELECT weight, quantity FROM ede.invoice, ede.shipment, ede.documentfreight, ede.freight WHERE invoice.invoiceID = shipment.invoiceID AND shipment.shipmentNo = documentfreight.shipmentNo AND invoice.invoiceID = {0} AND freight.itemID = documentfreight.itemID; ", invoiceID);
-            reader = cmd.ExecuteReader();
-            if (reader.Read()) {
+                cmd.CommandText = String.Format("SELECT weight, quantity FROM ede.invoice, ede.shipment, ede.documentfreight, ede.freight WHERE invoice.invoiceID = shipment.invoiceID AND shipment.shipmentNo = documentfreight.shipmentNo AND invoice.invoiceID = {0} AND freight.itemID = documentfreight.itemID; ", invoiceID);
+                reader = cmd.ExecuteReader();
+                reader.Read();
                 tbxPieces.Text = reader.GetInt32("quantity").ToString();
                 tbxWeight.Text = reader.GetFloat("weight").ToString();
-            }
-            if (!reader.HasRows)
-                MessageBox.Show("no row");
 
 
 
                 reader.Close();
-             
-                DatabaseConnector.closeDatabase();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something wrong. Please Contact our staff.");
+            }
+            finally { DatabaseConnector.closeDatabase(); }
+               
             
 
         }
