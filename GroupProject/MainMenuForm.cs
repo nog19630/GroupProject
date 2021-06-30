@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Microsoft.Reporting.WinForms;
 
 
 namespace GroupProject
@@ -34,6 +35,29 @@ namespace GroupProject
             {
                 lbl_UserType.Text += "User";
                 lbl_CustomerID.Text += LoginForm.customerId;
+                //Monthly Invoice 
+                try
+                {
+                    rv_monthlyInv.RefreshReport();
+                    DatabaseConnector.connectDatabase();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT shipment.shipmentNo,date,shipmentType,charge FROM shipment,documentfreight WHERE sender = '" + LoginForm.customerId + "' AND MONTH(date) = " + 6 + " AND shipment.shipmentNo = documentfreight.shipmentNo;", DatabaseConnector.getConnetion());
+                    DataSet1 ds = new DataSet1();
+                    adapter.Fill(ds.Tables[0]);
+                    rv_monthlyInv.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+                    rv_monthlyInv.LocalReport.ReportPath = System.Environment.CurrentDirectory + "\\..\\..\\Report1.rdlc";
+
+                    rv_monthlyInv.LocalReport.DataSources.Clear();
+                    rv_monthlyInv.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", ds.Tables[0]));
+                }
+                catch (Exception ex)
+
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    DatabaseConnector.closeDatabase();
+                }
 
                 //Load 
                 toolStripStatusLabel1.Text = "Time: " + DateTime.Now.ToString("h:mm:ss tt");
@@ -96,9 +120,12 @@ namespace GroupProject
                 tbp_MessageBox.Dispose();
                 tbp_payservice.Dispose();
                 tbp_submitbill.Dispose();
+                tbp_ImportInv.Dispose();
+                tbp_MonthInv.Dispose();
             }
-            
-            
+
+
+            this.rv_monthlyInv.RefreshReport();
         }
 
         private void tbc_Function_SelectedIndexChanged(object sender, EventArgs e)
