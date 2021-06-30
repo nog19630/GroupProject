@@ -30,314 +30,357 @@ namespace GroupProject
         private void InitializeComponent()
         {
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_Reset = new System.Windows.Forms.Button();
             this.btn_Submit = new System.Windows.Forms.Button();
-            this.txt_Address = new System.Windows.Forms.TextBox();
-            this.txt_Business = new System.Windows.Forms.TextBox();
-            this.txt_PostCode = new System.Windows.Forms.TextBox();
-            this.txt_FaxNumber = new System.Windows.Forms.TextBox();
-            this.txt_PhoneNumber = new System.Windows.Forms.TextBox();
-            this.txt_UserName = new System.Windows.Forms.TextBox();
-            this.lbl_Address = new System.Windows.Forms.Label();
-            this.lbl_Business = new System.Windows.Forms.Label();
-            this.lbl_PostCode = new System.Windows.Forms.Label();
-            this.lbl_Fax = new System.Windows.Forms.Label();
-            this.lbl_PhoneNumber = new System.Windows.Forms.Label();
-            this.lbl_UserName = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.lbl_CreditLimit = new System.Windows.Forms.Label();
-            this.txt_CreditLimit = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_CreditInfo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_AccountAddress = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_AccountName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_Password = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tbxPostCode = new System.Windows.Forms.TextBox();
+            this.lblPostCode = new System.Windows.Forms.Label();
+            this.checkBoxPassword = new System.Windows.Forms.CheckBox();
+            this.tbxRePassword = new System.Windows.Forms.TextBox();
+            this.lblRePassword = new System.Windows.Forms.Label();
+            this.llblCheckAccountValid = new System.Windows.Forms.LinkLabel();
+            this.llblOldUser = new System.Windows.Forms.LinkLabel();
+            this.checkBoxEmailNotice = new System.Windows.Forms.CheckBox();
+            this.checkBoxPolicy = new System.Windows.Forms.CheckBox();
+            this.rbBussinessP = new System.Windows.Forms.RadioButton();
+            this.lblBussiness = new System.Windows.Forms.Label();
+            this.rbBussinessC = new System.Windows.Forms.RadioButton();
+            this.tbxPhonePrefix = new System.Windows.Forms.TextBox();
+            this.tbxFax = new System.Windows.Forms.TextBox();
+            this.lblFax = new System.Windows.Forms.Label();
+            this.tbxAddress = new System.Windows.Forms.TextBox();
+            this.tbxPhone = new System.Windows.Forms.TextBox();
+            this.tbxEmail = new System.Windows.Forms.TextBox();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
+            this.tbxAccount = new System.Windows.Forms.TextBox();
+            this.tbxName = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(290, 565);
+            this.btn_Cancel.Location = new System.Drawing.Point(270, 629);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(112, 26);
+            this.btn_Cancel.Size = new System.Drawing.Size(149, 41);
             this.btn_Cancel.TabIndex = 36;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // btn_Reset
-            // 
-            this.btn_Reset.Location = new System.Drawing.Point(160, 565);
-            this.btn_Reset.Name = "btn_Reset";
-            this.btn_Reset.Size = new System.Drawing.Size(112, 26);
-            this.btn_Reset.TabIndex = 35;
-            this.btn_Reset.Text = "Reset";
-            this.btn_Reset.UseVisualStyleBackColor = true;
-            this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
-            // 
             // btn_Submit
             // 
-            this.btn_Submit.Location = new System.Drawing.Point(30, 565);
+            this.btn_Submit.Location = new System.Drawing.Point(12, 629);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(112, 26);
+            this.btn_Submit.Size = new System.Drawing.Size(136, 41);
             this.btn_Submit.TabIndex = 34;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.UseVisualStyleBackColor = true;
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
-            // txt_Address
-            // 
-            this.txt_Address.Location = new System.Drawing.Point(101, 266);
-            this.txt_Address.Multiline = true;
-            this.txt_Address.Name = "txt_Address";
-            this.txt_Address.Size = new System.Drawing.Size(247, 70);
-            this.txt_Address.TabIndex = 33;
-            // 
-            // txt_Business
-            // 
-            this.txt_Business.Location = new System.Drawing.Point(101, 157);
-            this.txt_Business.Name = "txt_Business";
-            this.txt_Business.Size = new System.Drawing.Size(247, 22);
-            this.txt_Business.TabIndex = 32;
-            // 
-            // txt_PostCode
-            // 
-            this.txt_PostCode.Location = new System.Drawing.Point(101, 123);
-            this.txt_PostCode.Name = "txt_PostCode";
-            this.txt_PostCode.Size = new System.Drawing.Size(247, 22);
-            this.txt_PostCode.TabIndex = 31;
-            // 
-            // txt_FaxNumber
-            // 
-            this.txt_FaxNumber.Location = new System.Drawing.Point(101, 89);
-            this.txt_FaxNumber.Name = "txt_FaxNumber";
-            this.txt_FaxNumber.Size = new System.Drawing.Size(247, 22);
-            this.txt_FaxNumber.TabIndex = 30;
-            this.txt_FaxNumber.UseSystemPasswordChar = true;
-            // 
-            // txt_PhoneNumber
-            // 
-            this.txt_PhoneNumber.Location = new System.Drawing.Point(101, 55);
-            this.txt_PhoneNumber.Name = "txt_PhoneNumber";
-            this.txt_PhoneNumber.Size = new System.Drawing.Size(247, 22);
-            this.txt_PhoneNumber.TabIndex = 29;
-            // 
-            // txt_UserName
-            // 
-            this.txt_UserName.Location = new System.Drawing.Point(101, 21);
-            this.txt_UserName.Name = "txt_UserName";
-            this.txt_UserName.Size = new System.Drawing.Size(247, 22);
-            this.txt_UserName.TabIndex = 28;
-            // 
-            // lbl_Address
-            // 
-            this.lbl_Address.AutoSize = true;
-            this.lbl_Address.Location = new System.Drawing.Point(5, 269);
-            this.lbl_Address.Name = "lbl_Address";
-            this.lbl_Address.Size = new System.Drawing.Size(54, 12);
-            this.lbl_Address.TabIndex = 27;
-            this.lbl_Address.Text = "* Address:";
-            // 
-            // lbl_Business
-            // 
-            this.lbl_Business.AutoSize = true;
-            this.lbl_Business.Location = new System.Drawing.Point(5, 160);
-            this.lbl_Business.Name = "lbl_Business";
-            this.lbl_Business.Size = new System.Drawing.Size(48, 12);
-            this.lbl_Business.TabIndex = 26;
-            this.lbl_Business.Text = "Business:";
-            // 
-            // lbl_PostCode
-            // 
-            this.lbl_PostCode.AutoSize = true;
-            this.lbl_PostCode.Location = new System.Drawing.Point(5, 126);
-            this.lbl_PostCode.Name = "lbl_PostCode";
-            this.lbl_PostCode.Size = new System.Drawing.Size(55, 12);
-            this.lbl_PostCode.TabIndex = 25;
-            this.lbl_PostCode.Text = "Post Code:";
-            // 
-            // lbl_Fax
-            // 
-            this.lbl_Fax.AutoSize = true;
-            this.lbl_Fax.Location = new System.Drawing.Point(5, 92);
-            this.lbl_Fax.Name = "lbl_Fax";
-            this.lbl_Fax.Size = new System.Drawing.Size(69, 12);
-            this.lbl_Fax.TabIndex = 24;
-            this.lbl_Fax.Text = "Fax Number: ";
-            // 
-            // lbl_PhoneNumber
-            // 
-            this.lbl_PhoneNumber.AutoSize = true;
-            this.lbl_PhoneNumber.Location = new System.Drawing.Point(5, 58);
-            this.lbl_PhoneNumber.Name = "lbl_PhoneNumber";
-            this.lbl_PhoneNumber.Size = new System.Drawing.Size(90, 12);
-            this.lbl_PhoneNumber.TabIndex = 23;
-            this.lbl_PhoneNumber.Text = "* Phone Number: ";
-            // 
-            // lbl_UserName
-            // 
-            this.lbl_UserName.AutoSize = true;
-            this.lbl_UserName.Location = new System.Drawing.Point(5, 24);
-            this.lbl_UserName.Name = "lbl_UserName";
-            this.lbl_UserName.Size = new System.Drawing.Size(68, 12);
-            this.lbl_UserName.TabIndex = 22;
-            this.lbl_UserName.Text = "* User Name:";
-            // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(26, 9);
+            this.lbl_Title.Location = new System.Drawing.Point(26, 10);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(369, 23);
             this.lbl_Title.TabIndex = 21;
             this.lbl_Title.Text = "Delivery Express System: Register Account";
             // 
-            // lbl_CreditLimit
+            // tbxPostCode
             // 
-            this.lbl_CreditLimit.AutoSize = true;
-            this.lbl_CreditLimit.Location = new System.Drawing.Point(5, 196);
-            this.lbl_CreditLimit.Name = "lbl_CreditLimit";
-            this.lbl_CreditLimit.Size = new System.Drawing.Size(65, 12);
-            this.lbl_CreditLimit.TabIndex = 37;
-            this.lbl_CreditLimit.Text = "Credit Limit:";
+            this.tbxPostCode.Location = new System.Drawing.Point(108, 510);
+            this.tbxPostCode.Name = "tbxPostCode";
+            this.tbxPostCode.Size = new System.Drawing.Size(262, 20);
+            this.tbxPostCode.TabIndex = 70;
             // 
-            // txt_CreditLimit
+            // lblPostCode
             // 
-            this.txt_CreditLimit.Location = new System.Drawing.Point(101, 193);
-            this.txt_CreditLimit.Name = "txt_CreditLimit";
-            this.txt_CreditLimit.Size = new System.Drawing.Size(247, 22);
-            this.txt_CreditLimit.TabIndex = 38;
+            this.lblPostCode.AutoSize = true;
+            this.lblPostCode.Location = new System.Drawing.Point(26, 513);
+            this.lblPostCode.Name = "lblPostCode";
+            this.lblPostCode.Size = new System.Drawing.Size(59, 13);
+            this.lblPostCode.TabIndex = 85;
+            this.lblPostCode.Text = "Post Code:";
             // 
-            // groupBox1
+            // checkBoxPassword
             // 
-            this.groupBox1.Controls.Add(this.txt_CreditInfo);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txt_CreditLimit);
-            this.groupBox1.Controls.Add(this.lbl_CreditLimit);
-            this.groupBox1.Controls.Add(this.txt_Address);
-            this.groupBox1.Controls.Add(this.txt_Business);
-            this.groupBox1.Controls.Add(this.txt_PostCode);
-            this.groupBox1.Controls.Add(this.txt_FaxNumber);
-            this.groupBox1.Controls.Add(this.txt_PhoneNumber);
-            this.groupBox1.Controls.Add(this.txt_UserName);
-            this.groupBox1.Controls.Add(this.lbl_Address);
-            this.groupBox1.Controls.Add(this.lbl_Business);
-            this.groupBox1.Controls.Add(this.lbl_PostCode);
-            this.groupBox1.Controls.Add(this.lbl_Fax);
-            this.groupBox1.Controls.Add(this.lbl_PhoneNumber);
-            this.groupBox1.Controls.Add(this.lbl_UserName);
-            this.groupBox1.Location = new System.Drawing.Point(30, 195);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(372, 354);
-            this.groupBox1.TabIndex = 39;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "User Information";
+            this.checkBoxPassword.AutoSize = true;
+            this.checkBoxPassword.Checked = true;
+            this.checkBoxPassword.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPassword.Enabled = false;
+            this.checkBoxPassword.Location = new System.Drawing.Point(321, 243);
+            this.checkBoxPassword.Name = "checkBoxPassword";
+            this.checkBoxPassword.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxPassword.TabIndex = 84;
+            this.checkBoxPassword.Text = "Valid";
+            this.checkBoxPassword.UseVisualStyleBackColor = true;
+            this.checkBoxPassword.Visible = false;
             // 
-            // groupBox2
+            // tbxRePassword
             // 
-            this.groupBox2.Controls.Add(this.txt_Password);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txt_AccountName);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txt_AccountAddress);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(30, 48);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(372, 129);
-            this.groupBox2.TabIndex = 40;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Account Information";
+            this.tbxRePassword.Location = new System.Drawing.Point(108, 241);
+            this.tbxRePassword.MaxLength = 16;
+            this.tbxRePassword.Name = "tbxRePassword";
+            this.tbxRePassword.PasswordChar = '*';
+            this.tbxRePassword.Size = new System.Drawing.Size(200, 20);
+            this.tbxRePassword.TabIndex = 64;
+            this.tbxRePassword.TextChanged += new System.EventHandler(this.CheckPassword);
             // 
-            // label1
+            // lblRePassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 231);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 12);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Credit Information:";
+            this.lblRePassword.AutoSize = true;
+            this.lblRePassword.Location = new System.Drawing.Point(27, 244);
+            this.lblRePassword.Name = "lblRePassword";
+            this.lblRePassword.Size = new System.Drawing.Size(73, 13);
+            this.lblRePassword.TabIndex = 83;
+            this.lblRePassword.Text = "Re-Enter Pw: ";
             // 
-            // txt_CreditInfo
+            // llblCheckAccountValid
             // 
-            this.txt_CreditInfo.Location = new System.Drawing.Point(101, 228);
-            this.txt_CreditInfo.Name = "txt_CreditInfo";
-            this.txt_CreditInfo.Size = new System.Drawing.Size(247, 22);
-            this.txt_CreditInfo.TabIndex = 40;
+            this.llblCheckAccountValid.AutoSize = true;
+            this.llblCheckAccountValid.Location = new System.Drawing.Point(315, 167);
+            this.llblCheckAccountValid.Name = "llblCheckAccountValid";
+            this.llblCheckAccountValid.Size = new System.Drawing.Size(86, 13);
+            this.llblCheckAccountValid.TabIndex = 74;
+            this.llblCheckAccountValid.TabStop = true;
+            this.llblCheckAccountValid.Text = "Check validation";
+            this.llblCheckAccountValid.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCheckAccountValid_LinkClicked);
             // 
-            // label2
+            // llblOldUser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 12);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "* Account Address:";
+            this.llblOldUser.AutoSize = true;
+            this.llblOldUser.Location = new System.Drawing.Point(296, 63);
+            this.llblOldUser.Name = "llblOldUser";
+            this.llblOldUser.Size = new System.Drawing.Size(104, 13);
+            this.llblOldUser.TabIndex = 73;
+            this.llblOldUser.TabStop = true;
+            this.llblOldUser.Text = "Already a Customer?";
+            this.llblOldUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOldUser_LinkClicked);
             // 
-            // txt_AccountAddress
+            // checkBoxEmailNotice
             // 
-            this.txt_AccountAddress.Location = new System.Drawing.Point(101, 24);
-            this.txt_AccountAddress.Name = "txt_AccountAddress";
-            this.txt_AccountAddress.Size = new System.Drawing.Size(247, 22);
-            this.txt_AccountAddress.TabIndex = 41;
+            this.checkBoxEmailNotice.AutoSize = true;
+            this.checkBoxEmailNotice.Location = new System.Drawing.Point(28, 593);
+            this.checkBoxEmailNotice.Name = "checkBoxEmailNotice";
+            this.checkBoxEmailNotice.Size = new System.Drawing.Size(335, 17);
+            this.checkBoxEmailNotice.TabIndex = 72;
+            this.checkBoxEmailNotice.Text = "I want to receive the company email, advertise and policy update.";
+            this.checkBoxEmailNotice.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // checkBoxPolicy
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 12);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "* Account Name:";
+            this.checkBoxPolicy.AutoSize = true;
+            this.checkBoxPolicy.Location = new System.Drawing.Point(28, 558);
+            this.checkBoxPolicy.Name = "checkBoxPolicy";
+            this.checkBoxPolicy.Size = new System.Drawing.Size(163, 17);
+            this.checkBoxPolicy.TabIndex = 71;
+            this.checkBoxPolicy.Text = "I confirm the company policy.";
+            this.checkBoxPolicy.UseVisualStyleBackColor = true;
+            this.checkBoxPolicy.CheckedChanged += new System.EventHandler(this.checkBoxPolicy_CheckedChanged);
             // 
-            // txt_AccountName
+            // rbBussinessP
             // 
-            this.txt_AccountName.Location = new System.Drawing.Point(101, 56);
-            this.txt_AccountName.Name = "txt_AccountName";
-            this.txt_AccountName.Size = new System.Drawing.Size(247, 22);
-            this.txt_AccountName.TabIndex = 43;
+            this.rbBussinessP.AutoSize = true;
+            this.rbBussinessP.Location = new System.Drawing.Point(234, 330);
+            this.rbBussinessP.Name = "rbBussinessP";
+            this.rbBussinessP.Size = new System.Drawing.Size(66, 17);
+            this.rbBussinessP.TabIndex = 67;
+            this.rbBussinessP.TabStop = true;
+            this.rbBussinessP.Text = "Personal";
+            this.rbBussinessP.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // lblBussiness
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 12);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "* Password:";
+            this.lblBussiness.AutoSize = true;
+            this.lblBussiness.Location = new System.Drawing.Point(27, 332);
+            this.lblBussiness.Name = "lblBussiness";
+            this.lblBussiness.Size = new System.Drawing.Size(84, 13);
+            this.lblBussiness.TabIndex = 82;
+            this.lblBussiness.Text = "Bussiness Type:";
             // 
-            // txt_Password
+            // rbBussinessC
             // 
-            this.txt_Password.Location = new System.Drawing.Point(101, 90);
-            this.txt_Password.Name = "txt_Password";
-            this.txt_Password.Size = new System.Drawing.Size(247, 22);
-            this.txt_Password.TabIndex = 45;
+            this.rbBussinessC.AutoSize = true;
+            this.rbBussinessC.Location = new System.Drawing.Point(128, 330);
+            this.rbBussinessC.Name = "rbBussinessC";
+            this.rbBussinessC.Size = new System.Drawing.Size(69, 17);
+            this.rbBussinessC.TabIndex = 66;
+            this.rbBussinessC.TabStop = true;
+            this.rbBussinessC.Text = "Company";
+            this.rbBussinessC.UseVisualStyleBackColor = true;
+            // 
+            // tbxPhonePrefix
+            // 
+            this.tbxPhonePrefix.Location = new System.Drawing.Point(128, 91);
+            this.tbxPhonePrefix.Name = "tbxPhonePrefix";
+            this.tbxPhonePrefix.Size = new System.Drawing.Size(51, 20);
+            this.tbxPhonePrefix.TabIndex = 60;
+            // 
+            // tbxFax
+            // 
+            this.tbxFax.Location = new System.Drawing.Point(108, 369);
+            this.tbxFax.Name = "tbxFax";
+            this.tbxFax.Size = new System.Drawing.Size(262, 20);
+            this.tbxFax.TabIndex = 68;
+            // 
+            // lblFax
+            // 
+            this.lblFax.AutoSize = true;
+            this.lblFax.Location = new System.Drawing.Point(27, 372);
+            this.lblFax.Name = "lblFax";
+            this.lblFax.Size = new System.Drawing.Size(67, 13);
+            this.lblFax.TabIndex = 81;
+            this.lblFax.Text = "Fax Number:";
+            // 
+            // tbxAddress
+            // 
+            this.tbxAddress.Location = new System.Drawing.Point(108, 413);
+            this.tbxAddress.Multiline = true;
+            this.tbxAddress.Name = "tbxAddress";
+            this.tbxAddress.Size = new System.Drawing.Size(262, 76);
+            this.tbxAddress.TabIndex = 69;
+            // 
+            // tbxPhone
+            // 
+            this.tbxPhone.Location = new System.Drawing.Point(198, 91);
+            this.tbxPhone.MaxLength = 15;
+            this.tbxPhone.Name = "tbxPhone";
+            this.tbxPhone.Size = new System.Drawing.Size(172, 20);
+            this.tbxPhone.TabIndex = 61;
+            // 
+            // tbxEmail
+            // 
+            this.tbxEmail.Location = new System.Drawing.Point(108, 286);
+            this.tbxEmail.MaxLength = 50;
+            this.tbxEmail.Name = "tbxEmail";
+            this.tbxEmail.Size = new System.Drawing.Size(262, 20);
+            this.tbxEmail.TabIndex = 65;
+            // 
+            // tbxPassword
+            // 
+            this.tbxPassword.Location = new System.Drawing.Point(108, 199);
+            this.tbxPassword.MaxLength = 16;
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
+            this.tbxPassword.Size = new System.Drawing.Size(200, 20);
+            this.tbxPassword.TabIndex = 63;
+            this.tbxPassword.TextChanged += new System.EventHandler(this.CheckPassword);
+            // 
+            // tbxAccount
+            // 
+            this.tbxAccount.Location = new System.Drawing.Point(108, 156);
+            this.tbxAccount.MaxLength = 16;
+            this.tbxAccount.Name = "tbxAccount";
+            this.tbxAccount.Size = new System.Drawing.Size(200, 20);
+            this.tbxAccount.TabIndex = 62;
+            this.tbxAccount.TextChanged += new System.EventHandler(this.tbxAccount_TextChanged);
+            // 
+            // tbxName
+            // 
+            this.tbxName.Location = new System.Drawing.Point(108, 52);
+            this.tbxName.MaxLength = 50;
+            this.tbxName.Name = "tbxName";
+            this.tbxName.Size = new System.Drawing.Size(182, 20);
+            this.tbxName.TabIndex = 59;
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(27, 416);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(48, 13);
+            this.lblAddress.TabIndex = 80;
+            this.lblAddress.Text = "Address:";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(27, 95);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(168, 13);
+            this.lblPhone.TabIndex = 79;
+            this.lblPhone.Text = "Phone Number:     +                     -";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(27, 290);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(76, 13);
+            this.lblEmail.TabIndex = 78;
+            this.lblEmail.Text = "Email Address:";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(27, 202);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(59, 13);
+            this.lblPassword.TabIndex = 77;
+            this.lblPassword.Text = "Password: ";
+            // 
+            // lblAccount
+            // 
+            this.lblAccount.AutoSize = true;
+            this.lblAccount.Location = new System.Drawing.Point(26, 160);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(84, 13);
+            this.lblAccount.TabIndex = 76;
+            this.lblAccount.Text = "Account Name: ";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(27, 56);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 75;
+            this.lblName.Text = "Name:";
             // 
             // RegisterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 613);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(431, 682);
+            this.Controls.Add(this.tbxPostCode);
+            this.Controls.Add(this.lblPostCode);
+            this.Controls.Add(this.checkBoxPassword);
+            this.Controls.Add(this.tbxRePassword);
+            this.Controls.Add(this.lblRePassword);
+            this.Controls.Add(this.llblCheckAccountValid);
+            this.Controls.Add(this.llblOldUser);
+            this.Controls.Add(this.checkBoxEmailNotice);
+            this.Controls.Add(this.checkBoxPolicy);
+            this.Controls.Add(this.rbBussinessP);
+            this.Controls.Add(this.lblBussiness);
+            this.Controls.Add(this.rbBussinessC);
+            this.Controls.Add(this.tbxPhonePrefix);
+            this.Controls.Add(this.tbxFax);
+            this.Controls.Add(this.lblFax);
+            this.Controls.Add(this.tbxAddress);
+            this.Controls.Add(this.tbxPhone);
+            this.Controls.Add(this.tbxEmail);
+            this.Controls.Add(this.tbxPassword);
+            this.Controls.Add(this.tbxAccount);
+            this.Controls.Add(this.tbxName);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblAccount);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_Reset);
             this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.lbl_Title);
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,32 +389,34 @@ namespace GroupProject
         #endregion
 
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_Reset;
         private System.Windows.Forms.Button btn_Submit;
-        private System.Windows.Forms.TextBox txt_Address;
-        private System.Windows.Forms.TextBox txt_Business;
-        private System.Windows.Forms.TextBox txt_PostCode;
-        private System.Windows.Forms.TextBox txt_FaxNumber;
-        private System.Windows.Forms.TextBox txt_PhoneNumber;
-        private System.Windows.Forms.TextBox txt_UserName;
-        private System.Windows.Forms.Label lbl_Address;
-        private System.Windows.Forms.Label lbl_Business;
-        private System.Windows.Forms.Label lbl_PostCode;
-        private System.Windows.Forms.Label lbl_Fax;
-        private System.Windows.Forms.Label lbl_PhoneNumber;
-        private System.Windows.Forms.Label lbl_UserName;
         private System.Windows.Forms.Label lbl_Title;
-        private System.Windows.Forms.Label lbl_CreditLimit;
-        private System.Windows.Forms.TextBox txt_CreditLimit;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txt_CreditInfo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_Password;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_AccountName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_AccountAddress;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbxPostCode;
+        private System.Windows.Forms.Label lblPostCode;
+        private System.Windows.Forms.CheckBox checkBoxPassword;
+        private System.Windows.Forms.TextBox tbxRePassword;
+        private System.Windows.Forms.Label lblRePassword;
+        private System.Windows.Forms.LinkLabel llblCheckAccountValid;
+        private System.Windows.Forms.LinkLabel llblOldUser;
+        private System.Windows.Forms.CheckBox checkBoxEmailNotice;
+        private System.Windows.Forms.CheckBox checkBoxPolicy;
+        private System.Windows.Forms.RadioButton rbBussinessP;
+        private System.Windows.Forms.Label lblBussiness;
+        private System.Windows.Forms.RadioButton rbBussinessC;
+        private System.Windows.Forms.TextBox tbxPhonePrefix;
+        private System.Windows.Forms.TextBox tbxFax;
+        private System.Windows.Forms.Label lblFax;
+        private System.Windows.Forms.TextBox tbxAddress;
+        private System.Windows.Forms.TextBox tbxPhone;
+        private System.Windows.Forms.TextBox tbxEmail;
+        private System.Windows.Forms.TextBox tbxPassword;
+        private System.Windows.Forms.TextBox tbxAccount;
+        private System.Windows.Forms.TextBox tbxName;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.Label lblName;
     }
 }
