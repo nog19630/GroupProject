@@ -65,7 +65,7 @@ namespace GroupProject
                 string sql = $"SELECT * FROM ede.documentfreight WHERE itemID = '{itemID}';";
                 DataRow drDocumentFreight = DatabaseConnector.getDataRow(sql);
 
-                sql = $"SELECT * FROM ede.frieght WHERE itemID = '{itemID}';";
+                sql = $"SELECT * FROM ede.freight WHERE itemID = '{itemID}';";
                 DataRow drFreight = DatabaseConnector.getDataRow(sql);
 
                 // DocumentFreight table
