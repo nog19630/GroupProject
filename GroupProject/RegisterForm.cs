@@ -21,12 +21,6 @@ namespace GroupProject
             InitializeComponent();
         }
 
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void btn_Submit_Click(object sender, EventArgs e)
         {
             // Check Each Column Entered
@@ -230,9 +224,9 @@ namespace GroupProject
         }
         private void CheckPassword(object sender, EventArgs e)
         {
+            checkBoxPassword.Text = (tbxPassword.Text.Length >= 8) ? "Valid!" : "8~16 letters";
+            checkBoxPassword.Checked = tbxPassword.Text.Length >= 8;
             checkBoxPassword.Visible = tbxPassword.Text.Equals(tbxRePassword.Text) && !tbxPassword.Text.Equals("") && !tbxRePassword.Text.Equals("");
-            checkBoxPassword.Text = checkBoxPassword.Text.Length >= 8 ? "Valid!" : "8~16 alphanumeric letters";
-            checkBoxPassword.Checked = checkBoxPassword.Text.Length >= 8;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
