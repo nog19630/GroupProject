@@ -204,7 +204,7 @@ namespace GroupProject
                 int i = 0;
                 while (reader.Read())
                 {
-                    clbPayment.Items.Add(reader.GetString("name"), false);
+                    clbPayment.Items.Add(reader.GetString("name") + ", shipment no: " + reader.GetString("shipmentNo"), false);
                     charge[i] = reader.GetFloat("charge");
                     shipmentNo[i++] = reader.GetString("shipmentNo");
                 }
@@ -256,7 +256,7 @@ namespace GroupProject
 
                 foreach (int i in clbPayment.CheckedIndices.Cast<int>().ToArray())
                 {
-                    cmd.CommandText = String.Format("UPDATE ede.shipment SET status='totransfer' WHERE shipmentNo='{0}'", shipmentNo[i]);
+                    cmd.CommandText = String.Format("UPDATE ede.shipment SET status='wait_trans' WHERE shipmentNo='{0}'", shipmentNo[i]);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -297,7 +297,7 @@ namespace GroupProject
             StringBuilder res = new StringBuilder();
 
             for (int i = 0; i < 8; i++)
-                res.Append((char) ('9' - strArray[i] + '0' + i));
+                res.Append((char) (('9' * (i+1) * (i+2) - strArray[i])%10 + '0'));
             
             return res.ToString();
         }
@@ -348,6 +348,11 @@ namespace GroupProject
                 DatabaseConnector.closeDatabase();
             }
 
+        }
+
+        private void btnPayServiceCal_Click(object sender, EventArgs e)
+        {
+            lblPayServiceTotal.Text = "Total: $" + calPayServiceTotal().ToString("0.00");
         }
     }
 }
