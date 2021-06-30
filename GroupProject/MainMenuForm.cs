@@ -125,7 +125,7 @@ namespace GroupProject
             }
 
 
-            this.rv_monthlyInv.RefreshReport();
+            
         }
 
         private void tbc_Function_SelectedIndexChanged(object sender, EventArgs e)

@@ -43,7 +43,7 @@ namespace GroupProject
             }
             else if (userType == 'a')
             {
-                query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND SELECT CAST(aes_decrypt(staffPassword,'encryption_key') as char(100)) FROM staff = '{pass}';";
+                query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND CAST(aes_decrypt(staff.staffPassword,'encryption_key') as char(100)) = '{pass}';";
             }
             try
             {
