@@ -250,7 +250,7 @@ namespace GroupProject
                 {
                     cmd.CommandText = String.Format("UPDATE ede.customer SET customerCreditInfo='{0}' WHERE customerID={1}", tbxPayServiceCardNo.Text.Substring(0,8), LoginForm.customerId);
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = String.Format("UPDATE ede.edeaccount SET customerCreditInfo='{0}' WHERE customerID={1}",encryptString(tbxPayServiceCardNo.Text.Substring(8), true), LoginForm.customerId);
+                    cmd.CommandText = String.Format("UPDATE ede.edeaccount SET customerCreditInfo='{0}' WHERE customerID={1}",encryptString(tbxPayServiceCardNo.Text.Substring(8)), LoginForm.customerId);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -281,7 +281,7 @@ namespace GroupProject
             try
             {
                 tbxPayServiceCardNo.Text = reader.GetString("pre");
-                tbxPayServiceCardNo.Text += encryptString(reader.GetString("lat"), false);
+                tbxPayServiceCardNo.Text += encryptString(reader.GetString("lat"));
             }
             catch (Exception exception)
             {
@@ -291,13 +291,13 @@ namespace GroupProject
             DatabaseConnector.closeDatabase();
         }
 
-        private String encryptString(String str, bool enc)
+        private String encryptString(String str)
         {
             char[] strArray = str.ToCharArray();
             StringBuilder res = new StringBuilder();
 
             for (int i = 0; i < 8; i++)
-                res.Append((char) ('9' - strArray[i] + '0' + (enc? i : -i)));
+                res.Append((char) ('9' - strArray[i] + '0' + i));
             
             return res.ToString();
         }
