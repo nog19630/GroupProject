@@ -168,7 +168,7 @@ namespace GroupProject
             MySqlDataReader reader;
             cmd.CommandText = String.Format("SELECT name, charge, shipment.shipmentNo " +
                                             "FROM ede.documentfreight, ede.shipment " +
-                                            "WHERE shipment.shipmentNo=documentfreight.shipmentNo AND (sender = '{0}' OR receiver = '{0}') AND status = 'wait_pay';", LoginForm.customerId);
+                                            "WHERE shipment.shipmentNo=documentfreight.shipmentNo AND (sender = {0} OR receiver = {0}) AND status = 'wait_pay';", LoginForm.customerId);
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -221,7 +221,9 @@ namespace GroupProject
                 MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
                 if (checkbPayServiceSafeCreditInfo.Checked)
                 {
-                    cmd.CommandText = String.Format("UPDATE ede.customer SET customerCreditInfo='{0}' WHERE customerID='{1}'", tbxPayServiceCardNo.Text, LoginForm.customerId);
+                    cmd.CommandText = String.Format("UPDATE ede.customer SET customerCreditInfo='{0}' WHERE customerID={1}", tbxPayServiceCardNo.Text.Substring(0,8), LoginForm.customerId);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = String.Format("UPDATE ede.edeaccount SET customerCreditInfo='{0}' WHERE customerID={1}",encryptString(tbxPayServiceCardNo.Text.Substring(8), true), LoginForm.customerId);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -246,12 +248,13 @@ namespace GroupProject
             DatabaseConnector.connectDatabase();
             MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
             MySqlDataReader reader;
-            cmd.CommandText = String.Format("SELECT * FROM ede.customer WHERE customerID='{0}';", LoginForm.customerId);
+            cmd.CommandText = String.Format("SELECT customer.customerCreditInfo AS pre, edeaccount.customerCreditInfo AS lat FROM ede.customer, ede.edeaccount WHERE edeaccount.customerID={0} AND customer.customerID={0};", LoginForm.customerId);
             reader = cmd.ExecuteReader();
             reader.Read();
             try
             {
-                tbxPayServiceCardNo.Text = reader.GetString("customerCreditInfo");
+                tbxPayServiceCardNo.Text = reader.GetString("pre");
+                tbxPayServiceCardNo.Text += encryptString(reader.GetString("lat"), false);
             }
             catch (Exception exception)
             {
@@ -259,6 +262,17 @@ namespace GroupProject
             }
             reader.Close();
             DatabaseConnector.closeDatabase();
+        }
+
+        private String encryptString(String str, bool enc)
+        {
+            char[] strArray = str.ToCharArray();
+            StringBuilder res = new StringBuilder();
+
+            for (int i = 0; i < 8; i++)
+                res.Append((char) ('9' - strArray[i] + '0' + (enc? i : -i)));
+            
+            return res.ToString();
         }
 
         private void cbo_table_SelectedIndexChanged(object sender, EventArgs e)
