@@ -39,11 +39,11 @@ namespace GroupProject
         {
             string query = "";
             if (userType == 'u') { 
-                query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND loginAccountPw = '{pass}';";
+                query = $"SELECT * FROM ede.edeaccount WHERE loginAccountName = '{user}' AND CAST(aes_decrypt(loginAccountPw,'encryption_key') as char(100)) = '{pass}';";
             }
             else if (userType == 'a')
             {
-                query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND staffPassword = '{pass}';";
+                query = $"SELECT * FROM ede.staff WHERE staffID = '{user}' AND SELECT CAST(aes_decrypt(staffPassword,'encryption_key') as char(100)) FROM staff = '{pass}';";
             }
             try
             {
