@@ -58,118 +58,7 @@ namespace GroupProject
                 }
             }
         }
-        private void btn_submit_Click(object sender, EventArgs e)
-        {
-            using (MySqlConnection mysqlcon = new MySqlConnection(connection))
-            {
-                try
-                {
-                    string service = "";
-                    if (radio_doc.Checked)
-                    {
-                        service = radio_doc.Text;
-                    }
-                    else if (radio_pack.Checked)
-                    {
-                        service = radio_pack.Text;
-                    }
-                    else if (radio_express.Checked)
-                    {
-                        service = radio_express.Text;
-                    }
-                    else if (radio_domestic.Checked)
-                    {
-                        service = radio_domestic.Text;
-                    }
-                    else if (radio_world.Checked)
-                    {
-                        service = radio_world.Text;
-                    }
-                    else if (radio_other.Checked)
-                    {
-                        service = radio_other.Text;
-                    }
-                    if (dgv_pack.CurrentRow.Cells[8].Value.ToString() == "D")// D = document F = freight
-                    {
-                        string sql = "INSERT INTO documentfreight (name,quantity,serviceType,serviceOtherType,declaredvalue,centerID,shipmentNo,charge,description) VALUES(" +
-                            "@name,@quantity, @service, @othertype, @declaredval,@center ,@shipmentno, @charge, @desc);";
-
-                        mysqlcon.Open();
-                        MySqlCommand cmd = new MySqlCommand(sql, mysqlcon);
-                        cmd.Parameters.AddWithValue("@name", txt_recname.Text);
-                        cmd.Parameters.AddWithValue("@quantity", num_quant.Value);
-                        cmd.Parameters.AddWithValue("@service", service);
-                        cmd.Parameters.AddWithValue("@othertype", txt_others.Text);
-                        cmd.Parameters.AddWithValue("@declaredval", num_declared.Value);
-                        cmd.Parameters.AddWithValue("@center", dgv_pack.CurrentRow.Cells[3].Value);
-                        cmd.Parameters.AddWithValue("@shipmentno", dgv_pack.CurrentRow.Cells[0].Value);
-                        cmd.Parameters.AddWithValue("@charge", calculateCharge());
-                        cmd.Parameters.AddWithValue("@desc", txt_desc.Text);
-                        cmd.CommandType = CommandType.Text;
-                        if (cmd.ExecuteNonQuery() == 1)
-                        {
-                            if (DatabaseConnector.executeQuery("UPDATE shipment " +
-                                "SET status = 'wait_pay' " +
-                                "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
-                                MessageBox.Show("Airway bill successfully submitted.");
-                            else
-                                MessageBox.Show("Failed to submit airway bill.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to submit airway bill.");
-                        }
-                    }
-                    else
-                    {
-                        string sql = "INSERT INTO documentfreight (name,quantity,serviceType,serviceOtherType,declaredvalue,centerID,shipmentNo,charge,description) VALUES(" +
-                        "@name, @quantity, @service, @othertype, @declaredval, @center, @shipmentno, @charge, @desc);" +
-                        "INSERT INTO freight (weight, length, width, height, value) VALUES(" +
-                        "@weight, @length, @width, @height, NULL);";
-
-
-                        MySqlCommand cmd = new MySqlCommand(sql, mysqlcon);
-                        cmd.Parameters.AddWithValue("@quantity", num_quant.Value);
-                        cmd.Parameters.AddWithValue("@service", service);
-                        cmd.Parameters.AddWithValue("@othertype", txt_others.Text);
-                        cmd.Parameters.AddWithValue("@declaredval", num_declared.Value);
-                        cmd.Parameters.AddWithValue("@center", dgv_pack.CurrentRow.Cells[3].Value.ToString());
-                        cmd.Parameters.AddWithValue("@shipmentno", dgv_pack.CurrentRow.Cells[0].Value.ToString());
-                        cmd.Parameters.AddWithValue("@charge", calculateCharge());
-                        cmd.Parameters.AddWithValue("@desc", txt_desc.Text);
-                        cmd.Parameters.AddWithValue("@weight", num_weight.Value);
-                        cmd.Parameters.AddWithValue("@length", num_length.Value);
-                        cmd.Parameters.AddWithValue("@width", num_width.Value);
-                        cmd.Parameters.AddWithValue("@height", num_height.Value);
-                        cmd.CommandType = CommandType.Text;
-                        if (cmd.ExecuteNonQuery() >= 1)
-                        {
-                            if (DatabaseConnector.executeQuery("UPDATE shipment " +
-                           "SET status = 'wait_pay' " +
-                           "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
-                                MessageBox.Show("Airway bill successfully submitted.");
-                            else
-                                MessageBox.Show("Failed to submit airway bill.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to submit airway bill.");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    mysqlcon.Close();
-                }
-            }
-
-
-
-        }
+ 
         private void radio_express_CheckedChanged(object sender, EventArgs e)
         {
             if (radio_express.Checked)
@@ -308,6 +197,118 @@ namespace GroupProject
         private void btn_calculate_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Charge of shipment: $" + calculateCharge());
+        }
+
+        private void btn_submit_Click_1(object sender, EventArgs e)
+        {
+            using (MySqlConnection mysqlcon = new MySqlConnection(connection))
+            {
+                try
+                {
+                    string service = "";
+                    if (radio_doc.Checked)
+                    {
+                        service = radio_doc.Text;
+                    }
+                    else if (radio_pack.Checked)
+                    {
+                        service = radio_pack.Text;
+                    }
+                    else if (radio_express.Checked)
+                    {
+                        service = radio_express.Text;
+                    }
+                    else if (radio_domestic.Checked)
+                    {
+                        service = radio_domestic.Text;
+                    }
+                    else if (radio_world.Checked)
+                    {
+                        service = radio_world.Text;
+                    }
+                    else if (radio_other.Checked)
+                    {
+                        service = radio_other.Text;
+                    }
+                    if (dgv_pack.CurrentRow.Cells[8].Value.ToString() == "D")// D = document F = freight
+                    {
+                        string sql = "INSERT INTO documentfreight (name,quantity,serviceType,serviceOtherType,declaredvalue,centerID,shipmentNo,charge,description) VALUES(" +
+                            "@name,@quantity, @service, @othertype, @declaredval,@center ,@shipmentno, @charge, @desc);";
+
+                        mysqlcon.Open();
+                        MySqlCommand cmd = new MySqlCommand(sql, mysqlcon);
+                        cmd.Parameters.AddWithValue("@name", txt_recname.Text);
+                        cmd.Parameters.AddWithValue("@quantity", num_quant.Value);
+                        cmd.Parameters.AddWithValue("@service", service);
+                        cmd.Parameters.AddWithValue("@othertype", txt_others.Text);
+                        cmd.Parameters.AddWithValue("@declaredval", num_declared.Value);
+                        cmd.Parameters.AddWithValue("@center", dgv_pack.CurrentRow.Cells[3].Value);
+                        cmd.Parameters.AddWithValue("@shipmentno", dgv_pack.CurrentRow.Cells[0].Value);
+                        cmd.Parameters.AddWithValue("@charge", calculateCharge());
+                        cmd.Parameters.AddWithValue("@desc", txt_desc.Text);
+                        cmd.CommandType = CommandType.Text;
+                        if (cmd.ExecuteNonQuery() == 1)
+                        {
+                            if (DatabaseConnector.executeQuery("UPDATE shipment " +
+                                "SET status = 'wait_pay' " +
+                                "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
+                                MessageBox.Show("Airway bill successfully submitted.");
+                            else
+                                MessageBox.Show("Failed to submit airway bill.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to submit airway bill.");
+                        }
+                    }
+                    else
+                    {
+                        string sql = "INSERT INTO documentfreight (name,quantity,serviceType,serviceOtherType,declaredvalue,centerID,shipmentNo,charge,description) VALUES(" +
+                        "@name, @quantity, @service, @othertype, @declaredval, @center, @shipmentno, @charge, @desc);" +
+                        "INSERT INTO freight (weight, length, width, height, value) VALUES(" +
+                        "@weight, @length, @width, @height, NULL);";
+
+
+                        MySqlCommand cmd = new MySqlCommand(sql, mysqlcon);
+                        cmd.Parameters.AddWithValue("@quantity", num_quant.Value);
+                        cmd.Parameters.AddWithValue("@service", service);
+                        cmd.Parameters.AddWithValue("@othertype", txt_others.Text);
+                        cmd.Parameters.AddWithValue("@declaredval", num_declared.Value);
+                        cmd.Parameters.AddWithValue("@center", dgv_pack.CurrentRow.Cells[3].Value.ToString());
+                        cmd.Parameters.AddWithValue("@shipmentno", dgv_pack.CurrentRow.Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("@charge", calculateCharge());
+                        cmd.Parameters.AddWithValue("@desc", txt_desc.Text);
+                        cmd.Parameters.AddWithValue("@weight", num_weight.Value);
+                        cmd.Parameters.AddWithValue("@length", num_length.Value);
+                        cmd.Parameters.AddWithValue("@width", num_width.Value);
+                        cmd.Parameters.AddWithValue("@height", num_height.Value);
+                        cmd.CommandType = CommandType.Text;
+                        if (cmd.ExecuteNonQuery() >= 1)
+                        {
+                            if (DatabaseConnector.executeQuery("UPDATE shipment " +
+                           "SET status = 'wait_pay' " +
+                           "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
+                                MessageBox.Show("Airway bill successfully submitted.");
+                            else
+                                MessageBox.Show("Failed to submit airway bill.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to submit airway bill.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    mysqlcon.Close();
+                }
+            }
+
+
         }
     }
 }

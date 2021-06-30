@@ -76,6 +76,11 @@ namespace GroupProject
                 tbp_BookPickup.Controls.Add(bookPickupForm);
                 tbp_BookPickup.Show();
 
+                //Invoice 
+                ImportInvoice importinvoice = new ImportInvoice();
+                importinvoice.TopLevel = false;
+                importinvoice.Visible = true;
+                tbp_ImportInv.Controls.Add(importinvoice);
 
                 // check shipment status form
                 CheckShipmentStatusForm checkShipmentStatusForm = new CheckShipmentStatusForm();

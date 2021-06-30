@@ -67,11 +67,13 @@ namespace GroupProject
 
             cmd.CommandText = String.Format("SELECT weight, quantity FROM ede.invoice, ede.shipment, ede.documentfreight, ede.freight WHERE invoice.invoiceID = shipment.invoiceID AND shipment.shipmentNo = documentfreight.shipmentNo AND invoice.invoiceID = {0} AND freight.itemID = documentfreight.itemID; ", invoiceID);
             reader = cmd.ExecuteReader();
-            reader.Read();
+            if (reader.Read()) {
+                tbxPieces.Text = reader.GetInt32("quantity").ToString();
+                tbxWeight.Text = reader.GetFloat("weight").ToString();
+            }
             if (!reader.HasRows)
                 MessageBox.Show("no row");
-            tbxPieces.Text = reader.GetInt32("quantity").ToString();
-            tbxWeight.Text = reader.GetFloat("weight").ToString();
+
 
 
                 reader.Close();

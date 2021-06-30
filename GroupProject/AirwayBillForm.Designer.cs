@@ -344,6 +344,7 @@ namespace GroupProject
             this.radio_express.TabStop = true;
             this.radio_express.Text = "Express Document";
             this.radio_express.UseVisualStyleBackColor = true;
+            this.radio_express.CheckedChanged += new System.EventHandler(this.radio_express_CheckedChanged);
             // 
             // radio_doc
             // 
@@ -412,6 +413,7 @@ namespace GroupProject
             this.btn_calculate.TabIndex = 24;
             this.btn_calculate.Text = "Calculate expenses";
             this.btn_calculate.UseVisualStyleBackColor = true;
+            this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click_1);
             // 
             // button3
             // 
@@ -440,6 +442,7 @@ namespace GroupProject
             this.btn_submit.TabIndex = 21;
             this.btn_submit.Text = "Submit";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click_1);
             // 
             // groupBox4
             // 
@@ -533,6 +536,7 @@ namespace GroupProject
             this.dgv_pack.ReadOnly = true;
             this.dgv_pack.Size = new System.Drawing.Size(490, 150);
             this.dgv_pack.TabIndex = 17;
+            this.dgv_pack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_pack_CellContentClick);
             // 
             // label1
             // 
