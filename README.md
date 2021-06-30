@@ -21,3 +21,7 @@ This is ITP4915M End of Module Assignment for Group 11.
 
 ### Visual Studio Nuget Packages ###
 1. Mysql.Data 8.0.25
+2. Microsoft.ReportingServices.ReportViewerControl.Winforms 150.1449.0
+
+### Extensions ### 
+1. Microsoft RDLC Report Designer
