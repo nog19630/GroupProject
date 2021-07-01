@@ -15,7 +15,7 @@ namespace GroupProject
     {
 
         float[] charge;
-        String[] shipmentNo;
+        String[] shipmentNo, description;
         public PayServiceForm()
         {
             InitializeComponent();
@@ -56,7 +56,13 @@ namespace GroupProject
                     cmd.ExecuteNonQuery();
 
                     //Generate invoice
-                    cmd.CommandText = String.Format("INSERT INTO ede.invoice VALUES ({0}, {1});", LoginForm.customerId, calPayServiceTotal());
+                    MySqlDataReader reader;
+                    cmd.CommandText = String.Format("SELECT invoiceID FROM ede.invoice ORDER BY invoiceID DESC LIMIT 1;");
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    cmd.CommandText = String.Format("INSERT INTO ede.invoice VALUES ({0}, {1}, {2}, {3}, 'Y', 'credit card');", reader.GetInt64("invoiceID")+1, LoginForm.customerId, calPayServiceTotal(), description[i]==null? null: "'" + description[i] + "'");
+                    reader.Close(); 
+                    cmd.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("Payment Sucess..");
@@ -116,7 +122,7 @@ namespace GroupProject
             DatabaseConnector.connectDatabase();
             MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
             MySqlDataReader reader;
-            cmd.CommandText = String.Format("SELECT name, charge, shipment.shipmentNo " +
+            cmd.CommandText = String.Format("SELECT name, charge, shipment.shipmentNo, description " +
                                             "FROM ede.documentfreight, ede.shipment " +
                                             "WHERE shipment.shipmentNo=documentfreight.shipmentNo AND (sender = {0} OR receiver = {0}) AND status = 'wait_pay';", LoginForm.customerId);
             reader = cmd.ExecuteReader();
@@ -124,11 +130,16 @@ namespace GroupProject
             {
                 charge = new float[reader.FieldCount + 1];
                 shipmentNo = new String[reader.FieldCount + 1];
+                description = new String[reader.FieldCount + 1];
                 int i = 0;
                 while (reader.Read())
                 {
                     clbPayment.Items.Add(reader.GetString("name") + ", shipment no: " + reader.GetString("shipmentNo"), false);
                     charge[i] = reader.GetFloat("charge");
+                    try
+                    {
+                        description[i] = reader.GetString("description");
+                    }catch (Exception exception) { }
                     shipmentNo[i++] = reader.GetString("shipmentNo");
                 }
             }
