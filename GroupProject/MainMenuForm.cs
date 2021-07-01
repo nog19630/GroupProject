@@ -201,7 +201,7 @@ namespace GroupProject
             MySqlDataReader reader;
             cmd.CommandText = String.Format("SELECT name, charge, shipment.shipmentNo " +
                                             "FROM ede.documentfreight, ede.shipment " +
-                                            "WHERE shipment.shipmentNo=documentfreight.shipmentNo AND (sender = {0} OR receiver = {0}) AND status = 'wait_pay';", LoginForm.customerId);
+                                            "WHERE shipment.shipmentNo=documentfreight.shipmentNo AND (sender = '{0}' OR receiver = '{0}') AND status = 'wait_pay';", LoginForm.customerId);
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -313,7 +313,7 @@ namespace GroupProject
 
                 try
                 {
-                
+                    dgv_maintenance.DataSource = null;
                     DatabaseConnector.connectDatabase();
                     string sql = "SELECT * FROM " + cbo_table.Text + ";";
                     MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
@@ -324,6 +324,8 @@ namespace GroupProject
                     cmd.ExecuteNonQuery();
                     da.Fill(dt);
                     dgv_maintenance.DataSource = dt;
+                    if (cbo_table.Text == "staff")
+                        dgv_maintenance.Columns[1].Visible = false;
                     MySqlCommandBuilder cbuilder = new MySqlCommandBuilder(da);
 
             }

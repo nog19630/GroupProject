@@ -139,7 +139,7 @@ namespace GroupProject
             if (result == DialogResult.OK)
             {
                 string messageContent = ManageMessageForm.messageContent;
-                string sendTime = DateTime.Now.ToString();
+                string sendTime = DateTime.Now.ToString("HH:mm:ss");
                 string messageID = DateTime.Now.ToString("yyMMddhhmmss");
                 string sender = LoginForm.userId;
                 string receiver = txt_EdeAccountID.Text;

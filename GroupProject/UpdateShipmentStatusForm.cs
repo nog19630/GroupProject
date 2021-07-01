@@ -59,7 +59,7 @@ namespace GroupProject
                     if (chk_SendChangedMessage.Checked || chk_CustomMessage.Checked)
                     {
                         string sendMessage = "";
-                        string sendTime = DateTime.Now.ToString();
+                        string sendTime = DateTime.Now.ToString("HH:mm:ss");
                         
                         string messageID = DateTime.Now.ToString("yyMMddhhmmss");
                         if (chk_SendChangedMessage.Checked)
