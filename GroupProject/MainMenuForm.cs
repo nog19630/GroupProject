@@ -205,7 +205,7 @@ namespace GroupProject
 
                 try
                 {
-                
+                    dgv_maintenance.DataSource = null;
                     DatabaseConnector.connectDatabase();
                     string sql = "SELECT * FROM " + cbo_table.Text + ";";
                     MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
@@ -216,6 +216,8 @@ namespace GroupProject
                     cmd.ExecuteNonQuery();
                     da.Fill(dt);
                     dgv_maintenance.DataSource = dt;
+                    if (cbo_table.Text == "staff")
+                        dgv_maintenance.Columns[1].Visible = false;
                     MySqlCommandBuilder cbuilder = new MySqlCommandBuilder(da);
 
             }

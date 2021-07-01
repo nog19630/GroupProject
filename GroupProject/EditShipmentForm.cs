@@ -258,7 +258,12 @@ namespace GroupProject
         private void btn_UpdateStatus_Click(object sender, EventArgs e)
         {
             ShipmentNo = txt_ShipmentNo.Text;
-            SelectedStatus = cmb_Status.SelectedItem.ToString();
+            if (cmb_Status.SelectedItem == null) {
+                MessageBox.Show("Please select a status.");
+                return;
+            }
+            else
+                SelectedStatus = cmb_Status.SelectedItem.ToString();
             UpdateShipmentStatusForm updateStatusForm = new UpdateShipmentStatusForm();
             updateStatusForm.ShowDialog();
             fullList();
