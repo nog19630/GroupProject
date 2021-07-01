@@ -1,8 +1,12 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using ExcelDataReader;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +16,7 @@ namespace GroupProject
 {
     public partial class ImportInvoice : Form
     {
+
         public ImportInvoice()
         {
             InitializeComponent();
@@ -26,6 +31,9 @@ namespace GroupProject
             lvw_InvoiceList.Columns.Add("verification", 120);
             lvw_InvoiceList.Columns.Add("paymentMethod", 120);
             fullList();
+
+
+
         }
         private void fullList(bool showMessage = false)
         {
@@ -99,6 +107,83 @@ namespace GroupProject
 
 
 
+        }
+
+
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            DatabaseConnector.connectDatabase();
+            MySqlCommand cmd = DatabaseConnector.getConnetion().CreateCommand();
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx", Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (XLWorkbook workbook = new XLWorkbook(ofd.FileName))
+                        {
+                            foreach (IXLWorksheet ws in workbook.Worksheets)
+                            {
+                                bool isFirstRow = true, isLoaded = false;
+                                var rows = ws.RowsUsed();
+                                String sql = "INSERT INTO " + ws.Name.ToLower() + " (";
+
+                                foreach (var row in rows)
+                                {
+                                    if (isFirstRow)
+                                    {
+                                        foreach (IXLCell cell in row.Cells())
+                                            sql += cell.Value.ToString() + " ,";
+                                        sql = sql.Substring(0, sql.Length - 1) + ") VALUES (";
+                                        isFirstRow = false;
+                                    }
+                                    else
+                                    {
+                                        String sql2 = sql;
+                                        foreach (IXLCell cell in row.Cells())
+                                        {
+                                            if (cell.IsEmpty())
+                                                sql2 += "null ,";
+                                            else
+                                                sql2 += "'" + cell.Value.ToString() + "' ,";
+                                        }
+
+                                        sql2 = sql2.Substring(0, sql2.Length - 1) + ")";
+                                        cmd.CommandText = sql2;
+                                        try
+                                        {
+                                            cmd.ExecuteNonQuery();
+                                            isLoaded = true;
+                                            MessageBox.Show(sql2 + "\nThis ok!");
+                                        }
+                                        catch (Exception exception)
+                                        {
+
+                                        }
+                                    }
+                                }
+                                if (!isLoaded)
+                                    MessageBox.Show("Worksheet " + ws.Name + " has input mistake! or\nData may have already inputted!");
+                            }
+                        }
+                        MessageBox.Show("Complete!");
+                    }
+                    catch (System.IO.IOException exception)
+                    {
+                        MessageBox.Show("Please close your worksheet before import!");
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show("Something Wrong!");
+                    }
+                    finally
+                    {
+                        DatabaseConnector.closeDatabase();
+                    }
+                    
+                }
+            }
         }
     }
 }
