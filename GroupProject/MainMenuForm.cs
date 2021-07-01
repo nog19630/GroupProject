@@ -38,9 +38,10 @@ namespace GroupProject
                 //Monthly Invoice 
                 try
                 {
+                    
                     rv_monthlyInv.RefreshReport();
-                    DatabaseConnector.connectDatabase();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT shipment.shipmentNo,date,shipmentType,charge FROM shipment,documentfreight WHERE sender = '" + LoginForm.customerId + "' AND MONTH(date) = " + 6 + " AND shipment.shipmentNo = documentfreight.shipmentNo;", DatabaseConnector.getConnetion());
+                    DatabaseConnector.connectDatabase();              
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT shipment.shipmentNo,date,shipmentType,charge FROM shipment,documentfreight WHERE sender = '" + LoginForm.customerId + "' AND MONTH(date) = " + DateTime.Now.Month + " AND shipment.shipmentNo = documentfreight.shipmentNo;", DatabaseConnector.getConnetion());
                     DataSet1 ds = new DataSet1();
                     adapter.Fill(ds.Tables[0]);
                     rv_monthlyInv.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;

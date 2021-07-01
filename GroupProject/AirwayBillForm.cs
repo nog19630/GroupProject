@@ -90,7 +90,7 @@ namespace GroupProject
                 else
                 {
 
-                    if (dgv_pack.CurrentRow.Cells[3].Value.ToString().Substring(0, 2) == "AU")
+                    if (dgv_pack.CurrentRow.Cells[3].Value.ToString().Substring(0, 2) == "au")
                     {
                         if (num_weight.Value < 15)
                         {
@@ -122,7 +122,7 @@ namespace GroupProject
                         }
 
                     }
-                    else if (dgv_pack.CurrentRow.Cells[3].Value.ToString().Substring(0, 2) == "JP")
+                    else if (dgv_pack.CurrentRow.Cells[3].Value.ToString().Substring(0, 2) == "jp")
                     {
                         if (num_weight.Value < 15)
                         {
@@ -153,7 +153,7 @@ namespace GroupProject
                             charge = (double)num_weight.Value * 58;
                         }
                     }
-                    else if (dgv_pack.CurrentRow.Cells[3].Value.ToString().Substring(0, 2) == "SH")
+                    else
                     {
                         if (num_weight.Value < 15)
                         {
