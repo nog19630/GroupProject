@@ -250,7 +250,7 @@ namespace GroupProject
                         if (cmd.ExecuteNonQuery() == 1)
                         {
                             if (DatabaseConnector.executeQuery("UPDATE shipment " +
-                                "SET status = 'wait_trans' " +
+                                "SET status = 'wait_pay' " +
                                 "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
                                 MessageBox.Show("Airway bill successfully submitted.");
                             else
@@ -286,7 +286,7 @@ namespace GroupProject
                         if (cmd.ExecuteNonQuery() >= 1)
                         {
                             if (DatabaseConnector.executeQuery("UPDATE shipment " +
-                           "SET status = 'wait_trans' " +
+                           "SET status = 'wait_pay' " +
                            "WHERE shipmentNo = " + dgv_pack.CurrentRow.Cells[0].Value + ";"))
                                 MessageBox.Show("Airway bill successfully submitted.");
                             else
